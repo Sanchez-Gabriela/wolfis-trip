@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport Head from 'next/head';\nexport var __N_SSP = true;\nexport default function Logout() {\n  return __jsx(\"div\", null, __jsx(Head, null, __jsx(\"title\", null, \"Logged out\")), \"Successfully Logged Out\");\n}","map":null,"metadata":{},"sourceType":"module"}

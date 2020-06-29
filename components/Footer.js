@@ -10,18 +10,20 @@ export default function Footer() {
     { name: 'Home', url: '/index' },
     { name: 'About', url: '/about' },
     { name: 'Log in', url: '/login' },
-    { name: 'Sign up', url: '/signUp' },
+    { name: 'Register', url: '/register' },
   ];
 
   const navbar = css`
-    background-color: #323339;
-    font-family: 'Julius Sans One', sans-serif;
-    padding-bottom: 20px;
+    font-family: 'Karla', sans-serif;
+    padding-bottom: 10px;
     padding-top: 20px;
     align-items: baseline;
     display: flex;
     justify-content: flex-end;
+    position: absolute;
+    bottom: 0;
     width: 100%;
+    height: 2.5rem; /* Footer height */
   `;
 
   const columnList = css`
@@ -35,14 +37,15 @@ export default function Footer() {
   const links = css`
     padding-right: 15px;
     padding-left: 5px;
-    color: #ffff;
     text-decoration: none;
+    color: #fc4a1a;
+    font-family: 'Karla', sans-serif;
   `;
 
   const madeBy = css`
     text-align: right;
     margin-right: 20px;
-    color: #ffff;
+    color: #fc4a1a;
   `;
 
   return (

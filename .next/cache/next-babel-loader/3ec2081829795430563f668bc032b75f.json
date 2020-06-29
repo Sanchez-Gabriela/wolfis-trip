@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { selectSessionByToken } from '../../db';\nexport default async function checkLogin(req, res) {\n  const token = req.cookies.token;\n  const session = await selectSessionByToken(token);\n  res.json(session.length > 0);\n}","map":null,"metadata":{},"sourceType":"module"}

@@ -6,20 +6,20 @@ import { jsx, css } from '@emotion/core';
 
 export default function Signup() {
   const app = css`
-    background: #f26968;
+    background: #4abdac;
     min-height: 100vh;
     font-weight: 400;
-    font-family: 'sans-serif';
+    font-family: 'Karla', sans-serif;
     width: 100%;
     position: absolute;
   `;
   const form = css`
-    background: #323339;
+    background: #f7b733;
     width: 15%;
     height: 70%;
     position: relative;
     margin: auto;
-    margin-top: 15%;
+    margin-top: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,14 +32,14 @@ export default function Signup() {
     line-height: 2.5;
     margin-bottom: 15px;
     border-radius: 4px;
-    border: 2px solid #f26968;
+    border: 2px solid #f7b733;
     margin-top: 20px;
-    font-family: 'Muli', sans-serif;
+    font-family: 'Karla', sans-serif;
   `;
 
   const button = css`
     border-radius: 4px;
-    font-family: 'Muli', sans-serif;
+    font-family: 'Karla', sans-serif;
     font-size: 18px;
     margin-top: 10px;
     background: #ffff;
@@ -50,12 +50,23 @@ export default function Signup() {
     text-align: center;
     color: #2f4f4f;
     font-size: 18px;
-    font-family: 'Muli', sans-serif;
+    font-family: 'Karla', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 15px;
     text-decoration: none;
+  `;
+
+  const logo = css`
+    font-size: 40px;
+    color: #fc4a1a;
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-family: 'Karla', sans-serif;
+    text-decoration: none;
+    border: 2px solid #fc4a1a;
   `;
 
   return (
@@ -65,6 +76,11 @@ export default function Signup() {
         url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
       </style>
       <div css={app}>
+        <Link href={'/index'}>
+          <a href="#a" css={logo}>
+            Wolfi
+          </a>
+        </Link>
         <form css={form}>
           <input css={input} placeholder="Name" type="text" required="" />
           <input

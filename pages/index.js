@@ -1,197 +1,82 @@
-import Head from 'next/head';
 import React from 'react';
+import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
 
-const h1 = css`
-  font-family: 'Julius Sans One', sans-serif;
-  font-size: 2rem;
-  color: #ffff;
-`;
-
-const paragraph = css`
-  font-family: 'Julius Sans One', sans-serif;
-  font-size: 1.6rem;
-  color: #ffff;
-`;
-
-const img = css`
-  width: 20%;
-  padding: 5px;
-  border-radius: 5px;
-`;
-
-const container = css`
-  background-size: cover;
-  background: #f26968;
-`;
-
-const imgContainer = css`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 7%;
-`;
-
 export default function App() {
+  const header = css`
+    width: 100%;
+    background-color: #4abdac;
+  `;
+  const img = css`
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  `;
+
+  const logo = css`
+    font-size: 70px;
+    color: #fc4a1a;
+    display: inline-block;
+    margin-top: 50px;
+    font-family: 'Karla', sans-serif;
+    text-decoration: none;
+    border: 2px solid #fc4a1a;
+  `;
+
+  const links = css`
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 1.5rem;
+    font-family: 'Karla', sans-serif;
+    text-decoration: none;
+    background-color: #4abdac;
+    color: #ffff;
+    border-radius: 4px;
+  `;
+
+  const logoContainer = css`
+    text-align: center;
+  `;
+
+  const linkContainer = css`
+    text-align: center;
+    margin-top: 50px;
+  `;
+
+  const quote = css`
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Karla', sans-serif;
+    margin-top: 60px;
+    color: black;
+  `;
+
   return (
     <div>
       <style>
         @import
-        url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap');
+        url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
       </style>
       <Header />
+      <div css={header}>
+        <img src="/wien.png" alt="vienna city" css={img} />
+      </div>
+      <div css={logoContainer}>
+        <a href="#a" css={logo}>
+          Wolfi
+        </a>
+      </div>
       <div>
-        <Head>
-          <title>Wolfi</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-
-        <main css={container}>
-          <h1 css={h1}>Wolfi helps you in your journey...</h1>
-
-          <p css={paragraph}>
-            Wolfi is your personalised plan based on your interests!
-          </p>
-          <div css={imgContainer}>
-            <img css={img} src="/appPics.png" alt="App's insight" />
-            <img css={img} src="/appPics.png" alt="App's insight" />
-          </div>
-        </main>
-        <Footer />
-
-        <style jsx>{`
-          .container {
-            min-height: 100vh;
-            padding: 0 0.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-size: 16px;
-          }
-
-          main {
-            padding: 5rem 0;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-          }
-
-          a {
-            color: inherit;
-            text-decoration: none;
-          }
-
-          .title a {
-            color: #0070f3;
-            text-decoration: none;
-          }
-
-          .title a:hover,
-          .title a:focus,
-          .title a:active {
-            text-decoration: underline;
-          }
-
-          .title {
-            margin: 0;
-            line-height: 1.15;
-            font-size: 4rem;
-          }
-
-          .title,
-          .description {
-            text-align: center;
-          }
-
-          .description {
-            line-height: 1.5;
-            font-size: 1.5rem;
-          }
-
-          code {
-            background: #fafafa;
-            border-radius: 5px;
-            padding: 0.75rem;
-            font-size: 1.1rem;
-            font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-              DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-          }
-
-          .grid {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-
-            max-width: 800px;
-            margin-top: 3rem;
-          }
-
-          .card {
-            margin: 1rem;
-            flex-basis: 45%;
-            padding: 1.5rem;
-            text-align: left;
-            color: inherit;
-            text-decoration: none;
-            border: 1px solid #eaeaea;
-            border-radius: 10px;
-            transition: color 0.15s ease, border-color 0.15s ease;
-          }
-
-          .card:hover,
-          .card:focus,
-          .card:active {
-            color: #0070f3;
-            border-color: #0070f3;
-          }
-
-          .card h3 {
-            margin: 0 0 1rem 0;
-            font-size: 1.5rem;
-          }
-
-          .card p {
-            margin: 0;
-            font-size: 1.25rem;
-            line-height: 1.5;
-          }
-
-          .logo {
-            height: 1em;
-          }
-
-          @media (max-width: 600px) {
-            .grid {
-              width: 100%;
-              flex-direction: column;
-            }
-          }
-        `}</style>
-
-        <style jsx global>{`
-          html,
-          body {
-            padding: 0;
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-              Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-              sans-serif;
-          }
-
-          * {
-            box-sizing: border-box;
-          }
-        `}</style>
+        <p css={quote}>Get your personalized plan based on your interests!</p>
       </div>
     </div>
   );

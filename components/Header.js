@@ -1,30 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
-import Signup from '../pages/signUp';
 
 export default function Header() {
-  const linkList = [
-    { name: 'Log in', url: '/login' },
-    { name: 'Sign up', url: '/signUp' },
-  ];
-
   const logo = css`
     font-size: 30px;
-    color: #ffff;
+    color: #24305e;
     padding-left: 20px;
   `;
 
   const navbar = css`
     width: 100%;
     display: flex;
-    color: #ffff;
+    color: #24305e;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background: #f26968;
+    background: #ffff;
     font-family: 'Julius Sans One', sans-serif;
     padding: 20px;
   `;
@@ -34,6 +28,34 @@ export default function Header() {
     padding-left: 20px;
     font-size: 1.5rem;
   `;
+  const [user, setUser] = useState(null);
+  const linkList = [{ name: 'About', url: '/about' }];
+
+  if (user === null) {
+    linkList.push({ name: 'Register', url: '/register' });
+    linkList.push({ name: 'Login', url: '/login' });
+  } else {
+    linkList.push({ name: 'Logout', url: '/logout' });
+  }
+
+  useEffect(() => {
+    fetch('/api/checkLogin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      // body: JSON.stringify({ username, password }),
+    })
+      .then((response) => {
+        console.log('success', response);
+        if (response === 'true') {
+          setUser('TODO: add the user');
+        }
+      })
+      .catch((err) => {
+        console.log('error fetching session');
+      });
+  }, []);
 
   return (
     <div>

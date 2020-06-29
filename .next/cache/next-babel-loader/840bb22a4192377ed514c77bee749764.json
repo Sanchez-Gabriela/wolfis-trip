@@ -1,0 +1,1 @@
+{"ast":null,"code":"const argon2 = require('argon2');\n\nexport async function hashPassword(password) {\n  return argon2.hash(password);\n}\nexport async function verifyHashMatchesPassword(passwordHash, password) {\n  return argon2.verify(passwordHash, password);\n}","map":null,"metadata":{},"sourceType":"module"}
