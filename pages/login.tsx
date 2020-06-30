@@ -138,15 +138,11 @@ export default function Login() {
             placeholder="Password"
             type="password"
             name="password"
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             onChange={(event) => setPassword(event.target.value)}
           />
-          <button css={button} type="button">
-            {' '}
-            LOGIN
-          </button>
+          <button css={button}> LOGIN</button>
         </form>
-        {status}
+        <p>{status}</p>
         <a href="#a" css={forgottenPass}>
           I forgot my password, send me an email &#x0226B;
         </a>
@@ -162,7 +158,7 @@ export default function Login() {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (nextCookies(context).token) {
-    context.res.setHeader('location', '/interest');
+    context.res.setHeader('location', '/');
     context.res.statusCode = 302;
     context.res.end();
   }

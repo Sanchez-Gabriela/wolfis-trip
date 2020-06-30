@@ -8,11 +8,11 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
   // TODO: To secure your application even further,
   // accept a CSRF token here and verify it
   // (see pages/register.tsx)
-
   const username = req.body.username;
   const password = req.body.password;
-  const users = await selectUserByUsername(username);
+  const users = await selectUserByUsername(username, password);
 
+  console.log(req.body.username);
   if (users.length === 0) {
     console.log('denied login - zero users with that username');
     res.json({ loggedIn: false });
@@ -25,19 +25,22 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
     return;
   }
 
+  console.log('verifyHasMatchesPassword');
   console.log('logged in');
 
   const maxAge = 60 * 60 * 8; // 8 hours
   const token = crypto.randomBytes(24).toString('base64');
 
+  console.log(token);
   await insertSession(users[0].id, token);
 
   const cookie = serialize('token', token, {
     maxAge,
     expires: new Date(Date.now() + maxAge * 1000),
 
-    // Important for security
-    // Deny cookie access from JavaScript
+    // console.log(cookie);
+    //   // Important for security
+    //   // Deny cookie access from JavaScript
     httpOnly: true,
 
     // Important for security
