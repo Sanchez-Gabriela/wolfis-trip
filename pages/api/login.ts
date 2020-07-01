@@ -29,6 +29,7 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
   console.log('logged in');
 
   const maxAge = 60 * 60 * 8; // 8 hours
+
   const token = crypto.randomBytes(24).toString('base64');
 
   console.log(token);

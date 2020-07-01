@@ -1,15 +1,12 @@
 import React, { useState, FormEvent } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import Header from '../components/Header';
 import Router from 'next/router';
 import nextCookies from 'next-cookies';
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
 import { GetServerSidePropsContext } from 'next';
-
-import { loadGetInitialProps } from 'next/dist/next-server/lib/utils';
 
 //================================================================================
 // Style
@@ -107,7 +104,7 @@ export default function Login() {
         } else {
           setStatus('Logged in!');
           setTimeout(() => {
-            Router.replace('/');
+            Router.replace('/interests');
           }, 2000);
         }
       })
@@ -118,7 +115,6 @@ export default function Login() {
 
   return (
     <>
-      <Header />
       <div css={app}>
         <Link href={'/index'}>
           <a href="#a" css={logo}>
@@ -156,14 +152,14 @@ export default function Login() {
   );
 }
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  if (nextCookies(context).token) {
-    context.res.setHeader('location', '/');
-    context.res.statusCode = 302;
-    context.res.end();
-  }
+// export async function getServerSideProps(context: GetServerSidePropsContext) {
+//   if (nextCookies(context).token) {
+//     context.res.setHeader('location', '/');
+//     context.res.statusCode = 302;
+//     context.res.end();
+//   }
 
-  return {
-    props: {},
-  };
-}
+//   return {
+//     props: {},
+//   };
+// }

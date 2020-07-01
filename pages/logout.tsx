@@ -5,12 +5,15 @@ import { GetServerSidePropsContext } from 'next';
 
 export default function Logout() {
   return (
-    <div>
-      <Head>
-        <title>Logged out</title>
-      </Head>
-      Successfully Logged Out
-    </div>
+    <>
+      <Header />
+      <div>
+        <Head>
+          <title>Logged out</title>
+        </Head>
+        Successfully Logged Out
+      </div>
+    </>
   );
 }
 

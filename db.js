@@ -75,6 +75,6 @@ export async function deleteSessionByToken(token) {
 
 export async function insertSession(userId, token) {
   return sql`
-    INSERT sessions (user_id, token) VALUES (${userId}, ${token})
+    INSERT INTO sessions (user_id, token) VALUES (${userId}, ${token})
   `;
 }

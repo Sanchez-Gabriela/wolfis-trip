@@ -6,7 +6,6 @@ import Link from 'next/link';
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
-const queryString = require('query-string');
 
 type Props = {
   csrfToken: string;

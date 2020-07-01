@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { jsx, css } from '@emotion/core';
 import Link from 'next/link';
 import Datepicker from '../components/Datepicker';
+import Header from '../components/Header';
 
 // style
 const logo = css`
@@ -105,11 +106,12 @@ export default function interests(props) {
         url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
       </style>
       <div css={app}>
-        <Link href={'/index'}>
+        {/* <Link href={'/index'}>
           <a href="#a" css={logo}>
             Wolfi
           </a>
-        </Link>
+        </Link>  */}
+        <Header />
         <h1 css={mainTitle}>Get your plan here</h1>
         <div css={main}>
           <div css={calendar}>

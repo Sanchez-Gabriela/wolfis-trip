@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
+import cookies from 'js-cookie';
 
 export default function Header() {
   const logo = css`
@@ -31,6 +33,8 @@ export default function Header() {
   const [user, setUser] = useState(null);
   const linkList = [{ name: 'About', url: '/about' }];
 
+  console.log('username', user);
+
   if (user === null) {
     linkList.push({ name: 'Register', url: '/register' });
     linkList.push({ name: 'Login', url: '/login' });
@@ -44,16 +48,22 @@ export default function Header() {
       headers: {
         'Content-Type': 'application/json',
       },
-      // body: JSON.stringify({ username, password }),
+      // body: JSON.stringify({ }),
     })
       .then((response) => {
         console.log('success', response);
-        if (response === 'true') {
+        if (response.ok !== true) {
+          throw new Error('Error fetching session');
+        }
+        return response.json();
+      })
+      .then((json) => {
+        if (json === true) {
           setUser('TODO: add the user');
         }
       })
       .catch((err) => {
-        console.log('error fetching session');
+        console.error('error fetching session', err);
       });
   }, []);
 
@@ -65,9 +75,11 @@ export default function Header() {
       </style>
       <div css={navbar}>
         <div className="logo-header">
-          <a href="#a" css={logo}>
-            Wolfi
-          </a>
+          <Link href={'/index'}>
+            <a href="#a" css={logo}>
+              Wolfi
+            </a>
+          </Link>
         </div>
         <div className="navbar-linkList">
           {linkList.map((link) => {
