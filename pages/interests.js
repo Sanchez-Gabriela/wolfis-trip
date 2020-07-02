@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import MultiSelect from 'react-multi-select-component';
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
@@ -7,16 +8,6 @@ import Datepicker from '../components/Datepicker';
 import Header from '../components/Header';
 
 // style
-const logo = css`
-  font-size: 40px;
-  color: #fc4a1a;
-  display: inline-block;
-  margin-left: 20px;
-  margin-top: 20px;
-  font-family: 'Karla', sans-serif;
-  text-decoration: none;
-  border: 2px solid #fc4a1a;
-`;
 
 const app = css`
   min-height: 100vh;
@@ -33,18 +24,24 @@ const mainTitle = css`
   letter-spacing: 0.1em;
 `;
 
-const readyToGo = css`
-  color: #f7b733;
-  font-size: 20px;
-  text-decoration: none;
+const h2 = css`
+  color: #4abdac;
   font-family: 'Karla', sans-serif;
+  letter-spacing: 0.1em;
 `;
 
-// const li = css`
-//   margin: 20px;
-//   list-style-type: none;
-//   font-family: 'Karla', sans-serif;
-// `;
+const dropdown = css`
+  width: 100%;
+  margin-left: 40%;
+`;
+
+const readyToGo = css`
+  color: #f7b733;
+  font-size: 40px;
+  text-decoration: none;
+  font-family: 'Karla', sans-serif;
+  margin-left: 40%;
+`;
 
 const calendar = css`
   margin-left: 20px;
@@ -52,53 +49,42 @@ const calendar = css`
 
 const main = css`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  margin-top: 80px;
 `;
 
-// const img = css`
-//   width: 50%;
-//   border-radius: 4px;
-//   margin-bottom: 10px;
-//   margin-left: 20px;
-// `;
-
-// const description = css`
-//   font-family: 'Karla', sans-serif;
-//   list-style-type: none;
-//   margin: 20px;
-//   width: 47%;
-//   text-align: left;
-//   background: #fc4a1a;
-//   padding: 20px;
-//   border-radius: 4px;
-//   line-height: 1.8;
-//   color: #ffff;
-// `;
+const divToGo = css`
+  margin-top: 70px;
+`;
 
 export default function interests(props) {
-  // fetching data
   // fetch(
-  //   'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:MUSEUMOGD&srsName=EPSG:4326&outputFormat=json',
+  //   'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD &srsName=EPSG:4326&outputFormat=json',
   // )
   //   .then((res) => res.json())
   //   .then((json) => console.log(json));
 
-  const [pointInterest, setPointInterest] = useState('Rathaus');
+  // const filtering = props.sights.filter((sight) => {
+  //   return sight.name === 'Rathaus';
+  // });
 
-  function handleChange(e) {
-    setPointInterest(e.target.value);
-  }
+  const options = [
+    { value: 'sights', label: 'sights' },
+    { value: 'classical music', label: 'classical music' },
+    { value: 'palaces', label: 'palaces' },
+    { value: 'parks', label: 'parks' },
+    { value: 'churchs', label: 'churchs' },
+    { value: 'markets', label: 'markets' },
+    { value: 'coffee houses', label: 'coffee houses' },
+    { value: 'typical food', label: 'typical food' },
+    { value: 'vegan food', label: 'vegan food' },
+    { value: 'museums', label: 'museums' },
+    { value: 'theaters', label: 'theaters' },
+    { value: 'clubs', label: 'clubs' },
+  ];
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log(pointInterest);
-  }
+  const [selected, setSelected] = useState([]);
 
-  const filtering = props.sights.filter((sight) => {
-    return sight.name === 'Rathaus';
-  });
-
-  // console.log(filtering);
   return (
     <>
       <style>
@@ -112,40 +98,37 @@ export default function interests(props) {
           </a>
         </Link>  */}
         <Header />
-        <h1 css={mainTitle}>Get your plan here</h1>
+        {/* <h1 css={mainTitle}>Choose date and Interest</h1> */}
         <div css={main}>
           <div css={calendar}>
             <Datepicker />
           </div>
           <div>
-            {/* <ul>
-              {props.sights.map((sight) => {
-                return (
-                  <>
-                    <li css={li}>Name: {sight.name}</li>
-                    <li css={li}>Address: {sight.address}</li>
-                    <img src={sight.image} alt={sight.name} css={img} />
-                    <li css={description}>{sight.description}</li>
-                  </>
-                );
-              })}
-            </ul> */}
-            <form onSubmit={handleSubmit}>
-              <h2>Point of Interest:</h2>
-              <select onChange={handleChange} value={pointInterest}>
-                <option value="choose">Choose </option>
-                <option value={JSON.stringify(filtering)}>Palaces</option>
-                <option value="parks">Parks</option>
-                <option value="vue">Streets</option>
-                <option value="vue">Churchs</option>
-              </select>
-              <button type="submit">&#9755;</button>
-            </form>
-            <strong></strong>
+            <div css={dropdown}>
+              <h2 css={h2}>What are your interests:</h2>
+              <MultiSelect
+                options={options}
+                value={selected}
+                onChange={setSelected}
+                labelledBy={'Select'}
+              />
+            </div>
           </div>
+          {/* <ul>
+            {props.sight.map((sight) => {
+              return (
+                <>
+                  <li>Name: {sight.name}</li>
+                  <li>Address: {sight.address}</li>
+                  <img src={sight.image} alt={sight.name} />
+                  <li>{sight.description}</li>
+                </>
+              );
+            })}
+          </ul> */}
         </div>
-        <div>
-          <Link href={'/readyToGo'}>
+        <div css={divToGo}>
+          <Link href={'/readytogo'}>
             <a href="#a" css={readyToGo}>
               Get your plan! &#x0226B;
             </a>
@@ -157,12 +140,12 @@ export default function interests(props) {
 }
 
 export async function getServerSideProps(context) {
-  const { getSights } = await import('../db.js');
+  const { getPlaces } = await import('../db.js');
 
-  const sights = await getSights();
+  const places = await getPlaces();
   return {
     props: {
-      sights,
+      places,
     },
   };
 }

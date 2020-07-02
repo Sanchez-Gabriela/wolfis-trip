@@ -1112,6 +1112,11 @@
   dependencies:
     safe-buffer "^5.1.2"
 
+"@rooks/use-outside-click@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@rooks/use-outside-click/-/use-outside-click-3.6.0.tgz#4189dc16b92f13c25f1c8e161c8aef6945aff486"
+  integrity sha512-DDxdcD9bDDArV2tBmh5okaJNee/7EWaC5DsPrjTxIhhvXPpUatizcn2qYLcvX7y1vYpd64Wyqvkb87E6fsIfEQ==
+
 "@types/color-name@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
@@ -3233,6 +3238,11 @@ globals@^11.1.0:
   version "11.12.0"
   resolved "https://registry.yarnpkg.com/globals/-/globals-11.12.0.tgz#ab8795338868a0babd8525758018c2a7eb95c42e"
   integrity sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==
+
+goober@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/goober/-/goober-1.8.0.tgz#ed97e40e87300c6d1c8304a9d4b0f1398ff7669a"
+  integrity sha512-9ZFoOkBccexjqIgcwlhq7C/eCSkgTZX0BdNUkOnBFLedrJgo3R8lp9ckd/qqtngtF/JDyXSxJzwMU98kNjZ4Mw==
 
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.2.2:
   version "4.2.4"
@@ -5359,10 +5369,13 @@ react-is@16.13.1, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-puxl-icons@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-puxl-icons/-/react-puxl-icons-1.0.0.tgz#e7892d798da5816b3d36d9e6792e64ba562e1563"
-  integrity sha512-QsGDhwxZ0hLj/bEtUcBwjaBPwKwzKw9sPgzFeX3rI+z+zn2xdpiTmRG/Q7oAGZzBo99YaNjjGYXYi6hCkYLiug==
+react-multi-select-component@^2.0.12:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/react-multi-select-component/-/react-multi-select-component-2.0.12.tgz#c24b76637f4b5f248d1a1b2be7c646bdf83db95b"
+  integrity sha512-QcOc8zQgz9AQQkX51EuDokqPi8BIRGBQdvnn1im3d1gsSIIY2W09jkvd9+/ByVk6NiL4XjygJtwCGJSGQcr3+A==
+  dependencies:
+    "@rooks/use-outside-click" "^3.6.0"
+    goober "^1.8.0"
 
 react-refresh@0.8.3:
   version "0.8.3"

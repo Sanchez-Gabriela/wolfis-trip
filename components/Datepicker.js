@@ -55,11 +55,11 @@ function Datepicker() {
         onDateHover,
       }}
     >
-      <div>
+      {/* <div>
         <strong>Focused input: </strong>
         {state.focusedInput}
       </div>
-      <br />
+      <br /> */}
       <div>
         <strong>Start date: </strong>
         {state.startDate && state.startDate.toLocaleString()}

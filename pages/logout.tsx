@@ -2,8 +2,19 @@ import React from 'react';
 import Head from 'next/head';
 import Header from '../components/Header';
 import { GetServerSidePropsContext } from 'next';
+/** @jsx jsx */
+/** @jsxFrag React.Fragment */
+import { jsx, css } from '@emotion/core';
 
 export default function Logout() {
+  const logout = css`
+    font-family: 'Karla', sans-serif;
+    color: #4abdac;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 200px;
+  `;
+
   return (
     <>
       <Header />
@@ -11,7 +22,7 @@ export default function Logout() {
         <Head>
           <title>Logged out</title>
         </Head>
-        Successfully Logged Out
+        <div css={logout}>Successfully logged out!</div>
       </div>
     </>
   );

@@ -20,16 +20,6 @@ export default function App() {
     padding-bottom: 50px;
   `;
 
-  const logo = css`
-    font-size: 70px;
-    color: #fc4a1a;
-    display: inline-block;
-    margin-top: 50px;
-    font-family: 'Karla', sans-serif;
-    text-decoration: none;
-    border: 2px solid #fc4a1a;
-  `;
-
   const links = css`
     padding-right: 20px;
     padding-left: 20px;
@@ -43,21 +33,12 @@ export default function App() {
     border-radius: 4px;
   `;
 
-  const logoContainer = css`
-    text-align: center;
-  `;
-
-  const linkContainer = css`
-    text-align: center;
-    margin-top: 50px;
-  `;
-
   const quote = css`
     text-align: center;
     font-size: 1.5rem;
     font-family: 'Karla', sans-serif;
     margin-top: 60px;
-    color: black;
+    color: #555555;
   `;
 
   return (
@@ -70,14 +51,10 @@ export default function App() {
       <div css={header}>
         <img src="/wien.png" alt="vienna city" css={img} />
       </div>
-      <div css={logoContainer}>
-        <a href="#a" css={logo}>
-          Wolfi
-        </a>
-      </div>
       <div>
         <p css={quote}>Get your personalized plan based on your interests!</p>
       </div>
+      <Footer />
     </div>
   );
 }

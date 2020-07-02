@@ -31,11 +31,11 @@ const sql = postgres();
 //   },
 // ];
 
-export async function getSights() {
-  const sights = await sql`
-    select * from sights
+export async function getPlaces() {
+  const places = await sql`
+    select * from places
   `;
-  return sights;
+  return places;
 }
 
 export async function selectUserByUsername(username, password) {

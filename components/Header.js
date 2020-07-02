@@ -8,20 +8,24 @@ import cookies from 'js-cookie';
 
 export default function Header() {
   const logo = css`
-    font-size: 30px;
-    color: #24305e;
-    padding-left: 20px;
+    font-size: 40px;
+    color: #555555;
+    border: 2px solid #555555;
+    font-family: 'Karla', sans-serif;
+    margin-top: 20px;
+    text-decoration: none;
+    margin-left: -15px;
   `;
 
   const navbar = css`
     width: 100%;
     display: flex;
-    color: #24305e;
+    color: #555555;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     background: #ffff;
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: 'Karla', sans-serif;
     padding: 20px;
   `;
 
