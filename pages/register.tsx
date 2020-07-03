@@ -84,14 +84,8 @@ export default function Register(props: Props) {
         </style>
         <title>Register</title>
       </Head>
-
-      <Header />
       <div css={app}>
-        <Link href={'/index'}>
-          <a href="#a" css={logo}>
-            Wolfi
-          </a>
-        </Link>
+        <Header />
         <form method="POST" css={form}>
           <input name="username" css={input} />
           <input name="password" type="password" css={input} />

@@ -10,7 +10,7 @@ import Header from '../components/Header';
 // style
 
 const app = css`
-  min-height: 100vh;
+  ${'' /* min-height: 100vh; */}
   font-weight: 400;
   font-family: 'Karla', sans-serif;
   width: 100%;
@@ -30,9 +30,15 @@ const h2 = css`
   letter-spacing: 0.1em;
 `;
 
+const span = css`
+  color: #4abdac;
+  font-family: 'Karla', sans-serif;
+  text-align: center;
+`;
+
 const dropdown = css`
-  width: 100%;
-  margin-left: 40%;
+  width: 50%;
+  margin: auto;
 `;
 
 const readyToGo = css`
@@ -44,13 +50,13 @@ const readyToGo = css`
 `;
 
 const calendar = css`
-  margin-left: 20px;
+  margin: auto;
 `;
 
 const main = css`
   display: flex;
-  flex-direction: row;
-  margin-top: 80px;
+  flex-direction: column;
+  margin-top: 50px;
 `;
 
 const divToGo = css`
@@ -69,18 +75,18 @@ export default function interests(props) {
   // });
 
   const options = [
-    { value: 'sights', label: 'sights' },
-    { value: 'classical music', label: 'classical music' },
-    { value: 'palaces', label: 'palaces' },
-    { value: 'parks', label: 'parks' },
-    { value: 'churchs', label: 'churchs' },
-    { value: 'markets', label: 'markets' },
-    { value: 'coffee houses', label: 'coffee houses' },
-    { value: 'typical food', label: 'typical food' },
-    { value: 'vegan food', label: 'vegan food' },
-    { value: 'museums', label: 'museums' },
-    { value: 'theaters', label: 'theaters' },
-    { value: 'clubs', label: 'clubs' },
+    { value: '1', label: 'sights' },
+    { value: '2', label: 'classical music' },
+    { value: '3', label: 'palaces' },
+    { value: '4', label: 'parks' },
+    { value: '5', label: 'churchs' },
+    { value: '6', label: 'markets' },
+    { value: '7', label: 'coffee houses' },
+    { value: '8', label: 'typical food' },
+    { value: '9', label: 'vegan food' },
+    { value: '10', label: 'museums' },
+    { value: '11', label: 'theaters' },
+    { value: '12', label: 'clubs' },
   ];
 
   const [selected, setSelected] = useState([]);
@@ -92,19 +98,16 @@ export default function interests(props) {
         url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
       </style>
       <div css={app}>
-        {/* <Link href={'/index'}>
-          <a href="#a" css={logo}>
-            Wolfi
-          </a>
-        </Link>  */}
         <Header />
-        {/* <h1 css={mainTitle}>Choose date and Interest</h1> */}
+        <h2 css={mainTitle}>Let's plan your journey</h2>
         <div css={main}>
+          <span css={span}>1. Choose the dates you would like to plan </span>
           <div css={calendar}>
             <Datepicker />
           </div>
           <div>
             <div css={dropdown}>
+              <pre>{JSON.stringify(selected)}</pre>
               <h2 css={h2}>What are your interests:</h2>
               <MultiSelect
                 options={options}
@@ -115,13 +118,13 @@ export default function interests(props) {
             </div>
           </div>
           {/* <ul>
-            {props.sight.map((sight) => {
+            {props.selected.map((value) => {
               return (
                 <>
-                  <li>Name: {sight.name}</li>
-                  <li>Address: {sight.address}</li>
-                  <img src={sight.image} alt={sight.name} />
-                  <li>{sight.description}</li>
+                  <li>Name: {value.name}</li>
+                  <li>Address: {value.address}</li>
+                  <img src={value.image} alt={value.name} />
+                  <li>{value.description}</li>
                 </>
               );
             })}

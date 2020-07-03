@@ -66,13 +66,13 @@ const forgottenPass = css`
 
 const logo = css`
   font-size: 40px;
-  color: #fc4a1a;
+  color: #555555;
   display: inline-block;
   margin-left: 20px;
   margin-top: 20px;
   font-family: 'Karla', sans-serif;
   text-decoration: none;
-  border: 2px solid #fc4a1a;
+  border: 2px solid #555555;
 `;
 
 //================================================================================
