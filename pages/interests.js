@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MultiSelect from 'react-multi-select-component';
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
@@ -6,6 +6,7 @@ import { jsx, css } from '@emotion/core';
 import Link from 'next/link';
 import Datepicker from '../components/Datepicker';
 import Header from '../components/Header';
+import { START_DATE } from '@datepicker-react/hooks';
 
 // style
 
@@ -63,16 +64,12 @@ const divToGo = css`
   margin-top: 70px;
 `;
 
-export default function interests(props) {
+export default function Interests() {
   // fetch(
   //   'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD &srsName=EPSG:4326&outputFormat=json',
   // )
   //   .then((res) => res.json())
   //   .then((json) => console.log(json));
-
-  // const filtering = props.sights.filter((sight) => {
-  //   return sight.name === 'Rathaus';
-  // });
 
   const options = [
     { value: '1', label: 'sights' },
@@ -90,7 +87,25 @@ export default function interests(props) {
   ];
 
   const [selected, setSelected] = useState([]);
+  // const { insertJourneys } = await import('../db.js');
+  // const userId = userId;
+  // const startDate = props.state.startDate;
+  // const endDate = props.state.endDate;
 
+  // insertJourneys(startDate, endDate, userId);
+
+  // if (selected !== null) {
+  //   insertJourneys = (startDate, endDate, userId);
+  // } else {
+  //   alert('select the dates');
+  // }
+  const [state, setState] = useState({
+    startDate: null,
+    endDate: null,
+    focusedInput: START_DATE,
+  });
+
+  // console.log(state.startDate.toISOString().split('T')[0]);
   return (
     <>
       <style>
@@ -103,8 +118,30 @@ export default function interests(props) {
         <div css={main}>
           <span css={span}>1. Choose the dates you would like to plan </span>
           <div css={calendar}>
-            <Datepicker />
+            <Datepicker state={state} setState={setState} />
           </div>
+          <button
+            onClick={() => {
+              fetch('/api/journey', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  startDate: state.startDate.toISOString().split('T')[0],
+                  endDate: state.endDate.toISOString().split('T')[0],
+                  userId: '1',
+                }), // body data type must match "Content-Type" header
+              })
+                .then((response) => {
+                  console.log(response);
+                  return response.json();
+                })
+                .then((json) => {
+                  console.log(json);
+                });
+            }}
+          ></button>
           <div>
             <div css={dropdown}>
               <pre>{JSON.stringify(selected)}</pre>

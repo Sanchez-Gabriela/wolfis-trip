@@ -6,12 +6,8 @@ import Month from './Month';
 import NavButton from './NavButton';
 import DatepickerContext from './datepickerContext';
 
-function Datepicker() {
-  const [state, setState] = useState({
-    startDate: null,
-    endDate: null,
-    focusedInput: START_DATE,
-  });
+export default function Datepicker(props) {
+  // props.state
   const {
     firstDayOfWeek,
     activeMonths,
@@ -27,17 +23,17 @@ function Datepicker() {
     goToPreviousMonths,
     goToNextMonths,
   } = useDatepicker({
-    startDate: state.startDate,
-    endDate: state.endDate,
-    focusedInput: state.focusedInput,
+    startDate: props.state.startDate,
+    endDate: props.state.endDate,
+    focusedInput: props.state.focusedInput,
     onDatesChange: handleDateChange,
   });
 
   function handleDateChange(data) {
     if (!data.focusedInput) {
-      setState({ ...data, focusedInput: START_DATE });
+      props.setState({ ...data, focusedInput: START_DATE });
     } else {
-      setState(data);
+      props.setState(data);
     }
   }
 
@@ -58,16 +54,16 @@ function Datepicker() {
       {/* <div>
         <strong>Focused input: </strong>
         {state.focusedInput}
-      </div>
-      <br /> */}
+      </div> */}
+      <br />
       <div>
         <strong>Start date: </strong>
-        {state.startDate && state.startDate.toLocaleString()}
+        {props.state.startDate && props.state.startDate.toLocaleString()}
       </div>
       <br />
       <div>
         <strong>End date: </strong>
-        {state.endDate && state.endDate.toLocaleString()}
+        {props.state.endDate && props.state.endDate.toLocaleString()}
       </div>
       <br />
       <strong></strong>
@@ -96,5 +92,3 @@ function Datepicker() {
     </DatepickerContext.Provider>
   );
 }
-
-export default Datepicker;
