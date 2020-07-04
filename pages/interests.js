@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import MultiSelect from 'react-multi-select-component';
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
 import Link from 'next/link';
+import Footer from '../components/Footer';
 import Datepicker from '../components/Datepicker';
 import Header from '../components/Header';
 import { START_DATE } from '@datepicker-react/hooks';
@@ -11,30 +12,22 @@ import { START_DATE } from '@datepicker-react/hooks';
 // style
 
 const app = css`
-  ${'' /* min-height: 100vh; */}
+  min-height: 100vh;
   font-weight: 400;
   font-family: 'Karla', sans-serif;
   width: 100%;
   position: absolute;
 `;
 
-const mainTitle = css`
-  color: #4abdac;
-  font-family: 'Karla', sans-serif;
-  text-align: center;
-  letter-spacing: 0.1em;
-`;
-
 const h2 = css`
   color: #4abdac;
   font-family: 'Karla', sans-serif;
   letter-spacing: 0.1em;
-`;
-
-const span = css`
-  color: #4abdac;
-  font-family: 'Karla', sans-serif;
   text-align: center;
+  border-bottom: 2px solid #f7b733;
+  border-top: 2px solid #f7b733;
+  padding-top: 10px;
+  padding-bottom: 10px;
 `;
 
 const dropdown = css`
@@ -64,6 +57,23 @@ const divToGo = css`
   margin-top: 70px;
 `;
 
+const button = css`
+  width: 5%;
+  font-family: 'Karla', sans-serif;
+  margin: auto;
+  margin-top: 40px;
+  border-radius: 4px;
+  color: #4abdac;
+  border: 2px solid #4abdac;
+  padding: 10px;
+  font-weight: bold;
+  margin-bottom: 30px;
+`;
+
+const tags = css`
+  height: 500px;
+`;
+
 export default function Interests() {
   // fetch(
   //   'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD &srsName=EPSG:4326&outputFormat=json',
@@ -87,18 +97,7 @@ export default function Interests() {
   ];
 
   const [selected, setSelected] = useState([]);
-  // const { insertJourneys } = await import('../db.js');
-  // const userId = userId;
-  // const startDate = props.state.startDate;
-  // const endDate = props.state.endDate;
 
-  // insertJourneys(startDate, endDate, userId);
-
-  // if (selected !== null) {
-  //   insertJourneys = (startDate, endDate, userId);
-  // } else {
-  //   alert('select the dates');
-  // }
   const [state, setState] = useState({
     startDate: null,
     endDate: null,
@@ -114,13 +113,13 @@ export default function Interests() {
       </style>
       <div css={app}>
         <Header />
-        <h2 css={mainTitle}>Let's plan your journey</h2>
         <div css={main}>
-          <span css={span}>1. Choose the dates you would like to plan </span>
+          <h2 css={h2}>1. Choose the dates you would like to plan </h2>
           <div css={calendar}>
             <Datepicker state={state} setState={setState} />
           </div>
           <button
+            css={button}
             onClick={() => {
               fetch('/api/journey', {
                 method: 'POST',
@@ -141,11 +140,13 @@ export default function Interests() {
                   console.log(json);
                 });
             }}
-          ></button>
-          <div>
+          >
+            submit
+          </button>
+          <div css={tags}>
+            <h2 css={h2}>2. What are your interests:</h2>
             <div css={dropdown}>
               <pre>{JSON.stringify(selected)}</pre>
-              <h2 css={h2}>What are your interests:</h2>
               <MultiSelect
                 options={options}
                 value={selected}
@@ -174,6 +175,7 @@ export default function Interests() {
             </a>
           </Link>
         </div>
+        <Footer />
       </div>
     </>
   );

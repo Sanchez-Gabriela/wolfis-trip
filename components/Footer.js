@@ -6,32 +6,85 @@ import { jsx, css } from '@emotion/core';
 import About from '../pages/about';
 
 export default function Footer() {
-  const navbar = css`
+  const social = css`
+    width: 50%;
+    float: right;
     font-family: 'Karla', sans-serif;
-    padding-bottom: 10px;
-    padding-top: 20px;
-    align-items: baseline;
-    display: flex;
-    justify-content: flex-end;
+  `;
+
+  const inst = css`
+    float: right;
+    line-height: 70px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    background-color: lightblue;
+    font-size: 16px;
+    width: 20%;
+  `;
+
+  const tweet = css`
+    float: right;
+    line-height: 70px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    background-color: #f7b733;
+    font-size: 16px;
+    width: 20%;
+  `;
+
+  const support = css`
+    float: right;
+    line-height: 70px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    background-color: #4abdac;
+    font-size: 0.8em;
+    width: 40%;
+  `;
+
+  const linked = css`
+    float: right;
+    line-height: 70px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    background-color: lightblue;
+    font-size: 20%px;
+    width: 20%;
+  `;
+
+  const paragh = css`
+    padding-left: 5%;
+    color: white;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding-top: 10px;
+    padding-bottom: 29px;
+    background-color: #999;
+  `;
+
+  const copyright = css`
+    width: 50%;
+    float: left;
+    font-family: 'Karla', sans-serif;
+  `;
+
+  const footer = css`
+    width: 100%;
+    display: inline-block;
+    margin: 2em 0;
+    height: 70px;
+    background-color: #999;
     position: absolute;
     bottom: 0;
-    width: 100%;
-    height: 2.5rem; /* Footer height */
-  `;
-
-  const columnList = css`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-right: 28%;
-  `;
-
-  const madeBy = css`
-    text-align: right;
-    margin-right: 20px;
-    font-family: 'Karla', sans-serif;
-    color: #555555;
+    height: 2.5rem;
   `;
 
   return (
@@ -40,14 +93,27 @@ export default function Footer() {
         @import
         url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
       </style>
-      <div css={navbar}>
-        <div css={columnList}>
-          <div></div>
+      <footer css={footer}>
+        <div css={copyright}>
+          <p css={paragh}>&copy; 2020 - Sánchez</p>
         </div>
-        <div css={madeBy}>
-          <span></span>
+        <div css={social}>
+          <Link href={'/contact'}>
+            <a href="#a" css={support}>
+              Contact Us
+            </a>
+          </Link>
+          <a href="#a" css={inst}>
+            i
+          </a>
+          <a href="https://twitter.com/gab_veg" css={tweet}>
+            t
+          </a>
+          <a href="#a" css={linked}>
+            in
+          </a>
         </div>
-      </div>
+      </footer>
     </>
   );
 }

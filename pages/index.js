@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 /** @jsx jsx */
@@ -18,19 +17,7 @@ export default function App() {
     display: block;
     padding-top: 50px;
     padding-bottom: 50px;
-  `;
-
-  const links = css`
-    padding-right: 20px;
-    padding-left: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 1.5rem;
-    font-family: 'Karla', sans-serif;
-    text-decoration: none;
-    background-color: #4abdac;
-    color: #ffff;
-    border-radius: 4px;
+    margin-top: 30px;
   `;
 
   const quote = css`

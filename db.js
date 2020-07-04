@@ -58,8 +58,8 @@ export async function insertJourney(startDate, endDate, userId) {
   `;
 }
 
-// export async function insertJourneyEntries(journeyId, placeId, date, order) {
-//   return sql`
-//     INSERT INTO journeyentries (journey_id, place_id, date, order) VALUES (${journeyId}, ${placeId}, ${date}, ${order})
-//   `;
-// }
+export async function insertJourneyEntries(journeyId, placeId, date) {
+  return sql`
+    INSERT INTO journeyentries (journey_id, place_id, date, order) VALUES (${journeyId}, ${placeId}, ${date})
+  `;
+}

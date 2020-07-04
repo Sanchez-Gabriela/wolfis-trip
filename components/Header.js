@@ -26,13 +26,18 @@ export default function Header() {
     justify-content: space-between;
     background: #ffff;
     font-family: 'Karla', sans-serif;
-    padding: 20px;
+    margin-left: 30px;
+    margin-top: 20px;
   `;
 
   const links = css`
     padding-right: 30px;
     padding-left: 20px;
     font-size: 1.5rem;
+  `;
+
+  const navbarLinkList = css`
+    margin-right: 20px;
   `;
   const [user, setUser] = useState(null);
   const linkList = [{ name: 'About', url: '/about' }];
@@ -85,7 +90,7 @@ export default function Header() {
             </a>
           </Link>
         </div>
-        <div className="navbar-linkList">
+        <div css={navbarLinkList}>
           {linkList.map((link) => {
             return (
               <Link key={link.url} href={link.url}>

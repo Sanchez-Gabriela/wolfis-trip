@@ -6,6 +6,7 @@ import Link from 'next/link';
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
+import Footer from '../components/Footer';
 
 type Props = {
   csrfToken: string;
@@ -13,7 +14,6 @@ type Props = {
 
 export default function Register(props: Props) {
   const app = css`
-    background: #4abdac;
     min-height: 100vh;
     font-weight: 400;
     font-family: 'Karla', sans-serif;
@@ -45,17 +45,19 @@ export default function Register(props: Props) {
   `;
 
   const button = css`
-    border-radius: 4px;
+    width: 80px;
     font-family: 'Karla', sans-serif;
-    font-size: 18px;
-    margin-top: 10px;
-    background: #ffff;
-    border: 2px solid #2f4f4f;
+    margin: auto;
+    border-radius: 4px;
+    color: #4abdac;
+    border: 2px solid #4abdac;
+    padding: 10px;
+    font-weight: bold;
   `;
 
   const forgottenPass = css`
     text-align: center;
-    color: #2f4f4f;
+    color: #555555;
     font-size: 18px;
     font-family: 'Karla', sans-serif;
     display: flex;
@@ -65,16 +67,6 @@ export default function Register(props: Props) {
     text-decoration: none;
   `;
 
-  const logo = css`
-    font-size: 40px;
-    color: #fc4a1a;
-    display: inline-block;
-    margin-left: 20px;
-    margin-top: 20px;
-    font-family: 'Karla', sans-serif;
-    text-decoration: none;
-    border: 2px solid #fc4a1a;
-  `;
   return (
     <>
       <Head>
@@ -90,12 +82,8 @@ export default function Register(props: Props) {
           <input name="username" css={input} />
           <input name="password" type="password" css={input} />
           <input type="hidden" name="csrf" value={props.csrfToken} />
-          <Link href={'/register'}>
-            <a href="#a" css={forgottenPass}>
-              Register &#x0226B;
-            </a>
-          </Link>
-          <button css={button}>Register</button>
+
+          <button css={button}>REGISTER</button>
         </form>
         <a href="#a" css={forgottenPass}>
           I forgot my password, send me an email &#x0226B;
@@ -106,6 +94,7 @@ export default function Register(props: Props) {
           </a>
         </Link>
       </div>
+      <Footer />
     </>
   );
 }

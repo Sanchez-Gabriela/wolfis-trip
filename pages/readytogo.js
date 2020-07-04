@@ -46,6 +46,7 @@ export default function readytogo() {
       <div css={header}>
         <p css={quote}>Enjoy Vienna!</p>
       </div>
+      <div></div>
     </div>
   );
 }

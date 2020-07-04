@@ -7,13 +7,13 @@ import nextCookies from 'next-cookies';
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
 import { GetServerSidePropsContext } from 'next';
+import Footer from '../components/Footer';
 
 //================================================================================
 // Style
 //================================================================================
 
 const app = css`
-  background: #4abdac;
   min-height: 100vh;
   font-weight: 400;
   font-family: 'Karla', sans-serif;
@@ -44,17 +44,19 @@ const input = css`
 `;
 
 const button = css`
-  border-radius: 4px;
+  width: 70px;
   font-family: 'Karla', sans-serif;
-  font-size: 18px;
-  margin-top: 10px;
-  background: #ffff;
-  border: 2px solid #2f4f4f;
+  margin: auto;
+  border-radius: 4px;
+  color: #4abdac;
+  border: 2px solid #4abdac;
+  padding: 10px;
+  font-weight: bold;
 `;
 
 const forgottenPass = css`
   text-align: center;
-  color: #323339;
+  color: #555555;
   font-size: 18px;
   font-family: 'Karla', sans-serif;
   display: flex;
@@ -148,6 +150,7 @@ export default function Login() {
           </a>
         </Link>
       </div>
+      <Footer />
     </>
   );
 }
