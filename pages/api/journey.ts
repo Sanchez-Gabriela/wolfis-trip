@@ -8,8 +8,8 @@ export default async function journey(
   console.log(req.body);
   const startDate = req.body.startDate;
   const endDate = req.body.endDate;
-  const userId = req.body.userId;
-  const journeys = await insertJourney(startDate, endDate, userId);
+  const token = req.cookies.token || req.body.token;
+  const journeys = await insertJourney(startDate, endDate, token);
   console.log(journeys);
   res.json(journeys[0]);
 }

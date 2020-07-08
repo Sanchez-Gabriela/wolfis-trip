@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import { useState } from 'react';
 import { useDatepicker, START_DATE } from '@datepicker-react/hooks';
 import { jsx } from '@emotion/core';
 import Month from './Month';

@@ -8,8 +8,10 @@ import Footer from '../components/Footer';
 import Datepicker from '../components/Datepicker';
 import Header from '../components/Header';
 import { START_DATE } from '@datepicker-react/hooks';
-
-// style
+import Cookie from 'js-cookie';
+//================================================================================
+// Style
+//================================================================================
 
 const app = css`
   min-height: 100vh;
@@ -70,11 +72,28 @@ const button = css`
   margin-bottom: 30px;
 `;
 
+const selectButton = css`
+  width: 10%;
+  font-family: 'Karla', sans-serif;
+  text-align: center;
+  margin-top: 40px;
+  border-radius: 4px;
+  color: #4abdac;
+  border: 2px solid #4abdac;
+  padding: 10px;
+  font-weight: bold;
+  margin-bottom: 30px;
+`;
+
 const tags = css`
   height: 500px;
 `;
 
-export default function Interests() {
+//================================================================================
+// Function
+//================================================================================
+
+export default function Interests(props) {
   // fetch(
   //   'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD &srsName=EPSG:4326&outputFormat=json',
   // )
@@ -96,15 +115,18 @@ export default function Interests() {
     { value: '12', label: 'clubs' },
   ];
 
+  //multiselector
   const [selected, setSelected] = useState([]);
 
+  // console.log(selected);
+
+  //calendar
   const [state, setState] = useState({
     startDate: null,
     endDate: null,
     focusedInput: START_DATE,
   });
 
-  // console.log(state.startDate.toISOString().split('T')[0]);
   return (
     <>
       <style>
@@ -129,7 +151,7 @@ export default function Interests() {
                 body: JSON.stringify({
                   startDate: state.startDate.toISOString().split('T')[0],
                   endDate: state.endDate.toISOString().split('T')[0],
-                  userId: '1',
+                  token: Cookie.get('token'),
                 }), // body data type must match "Content-Type" header
               })
                 .then((response) => {
@@ -153,20 +175,34 @@ export default function Interests() {
                 onChange={setSelected}
                 labelledBy={'Select'}
               />
+              <button
+                onClick={() => {
+                  fetch('/api/tags', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                      journeyId: 1,
+                      placeIds: selected.map((tag) => {
+                        return tag.value;
+                      }), // I'm getting the [values]
+                    }), // body data type must match "Content-Type" header
+                  })
+                    .then((response) => {
+                      console.log(response);
+                      return response.json();
+                    })
+                    .then((json) => {
+                      console.log(json);
+                    });
+                }}
+                css={selectButton}
+              >
+                submit
+              </button>
             </div>
           </div>
-          {/* <ul>
-            {props.selected.map((value) => {
-              return (
-                <>
-                  <li>Name: {value.name}</li>
-                  <li>Address: {value.address}</li>
-                  <img src={value.image} alt={value.name} />
-                  <li>{value.description}</li>
-                </>
-              );
-            })}
-          </ul> */}
         </div>
         <div css={divToGo}>
           <Link href={'/readytogo'}>
@@ -181,13 +217,13 @@ export default function Interests() {
   );
 }
 
-export async function getServerSideProps(context) {
-  const { getPlaces } = await import('../db.js');
+// export async function getServerSideProps(context) {
+//   const { login } = await import('../api/login.ts');
 
-  const places = await getPlaces();
-  return {
-    props: {
-      places,
-    },
-  };
-}
+//   const user = await login();
+//   return {
+//     props: {
+//       login,
+//     },
+//   };
+// }

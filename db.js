@@ -52,14 +52,41 @@ export async function insertSession(userId, token) {
   `;
 }
 
-export async function insertJourney(startDate, endDate, userId) {
+export async function insertJourney(startDate, endDate, token) {
+  const search = await sql`
+    SELECT user_id FROM sessions WHERE token = ${token}
+  `;
+  console.log(search);
+
+  const userId = search[0].user_id;
+
   return sql`
     INSERT INTO journeys (start_date, end_date, user_id) VALUES (${startDate}, ${endDate}, ${userId}) RETURNING id, start_date, end_date, user_id
   `;
 }
 
-export async function insertJourneyEntries(journeyId, placeId, date) {
+export async function insertEntries(placeIds, journeyId) {
+  // selectedTags shows me a places_id column where tags_id is 7 for all of them
+
+  console.log('placeIds', placeIds);
+  const selectedTags = await sql`
+    SELECT places_id FROM places_tags WHERE tags_id = '9'
+  `;
+
+  // tag gives a random number from the places_id column
+
+  const tag = Object.values(
+    selectedTags[Math.floor(Math.random() * selectedTags.length)],
+  );
+
+  // it works
+  const tagArray = await sql`
+    SELECT name, address, image, description FROM places WHERE id = ${tag} RETURNING name, address, image, description
+  `;
+
+  console.log('tagArray', tagArray);
+
   return sql`
-    INSERT INTO journeyentries (journey_id, place_id, date, order) VALUES (${journeyId}, ${placeId}, ${date})
+    INSERT INTO entries (journey_id, place_id) VALUES (${journeyId}, ${tag})
   `;
 }

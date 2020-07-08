@@ -5,7 +5,7 @@ import Header from '../components/Header';
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
 
-export default function readytogo() {
+export default function readytogo(props) {
   const header = css`
     width: 100%;
     background-color: #4abdac;
@@ -45,8 +45,31 @@ export default function readytogo() {
       <Header />
       <div css={header}>
         <p css={quote}>Enjoy Vienna!</p>
+        <ul>
+          {props.entries.map((value) => {
+            return (
+              <>
+                <li>Name: {value.name}</li>
+                <li>Address: {value.address}</li>
+                <img src={value.image} alt={value.name} />
+                <li>{value.description}</li>
+              </>
+            );
+          })}
+        </ul>
       </div>
       <div></div>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { insertEntries } = await import('../db.js');
+
+  const entries = await insertEntries();
+  return {
+    props: {
+      entries,
+    },
+  };
 }

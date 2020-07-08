@@ -8,6 +8,7 @@ import nextCookies from 'next-cookies';
 import { jsx, css } from '@emotion/core';
 import { GetServerSidePropsContext } from 'next';
 import Footer from '../components/Footer';
+import Cookie from 'js-cookie';
 
 //================================================================================
 // Style
