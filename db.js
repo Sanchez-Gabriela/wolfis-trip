@@ -64,29 +64,36 @@ export async function insertJourney(startDate, endDate, token) {
     INSERT INTO journeys (start_date, end_date, user_id) VALUES (${startDate}, ${endDate}, ${userId}) RETURNING id, start_date, end_date, user_id
   `;
 }
+function getRandomItem(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
 
-export async function insertEntries(placeIds, journeyId) {
+export async function insertEntries(tagIds, journeyId) {
   // selectedTags shows me a places_id column where tags_id is 7 for all of them
-
-  console.log('placeIds', placeIds);
-  const selectedTags = await sql`
-    SELECT places_id FROM places_tags WHERE tags_id = '9'
+  const placesAndTags = await sql`
+    SELECT places_id, tags_id FROM places_tags WHERE tags_id IN (${tagIds})
   `;
-
+  console.log('karl', placesAndTags);
   // tag gives a random number from the places_id column
+  const selectedPlacesAndTags = [];
+  tagIds.forEach((tagId) => {
+    // these are the placesIds based on the tagId
+    const placesByTag = placesAndTags.filter((placeAndTag) => {
+      return placeAndTag.tags_id === Number(tagId);
+    });
+    const selectedPlaceAndTag = getRandomItem(placesByTag);
+    selectedPlacesAndTags.push(selectedPlaceAndTag);
+  });
 
-  const tag = Object.values(
-    selectedTags[Math.floor(Math.random() * selectedTags.length)],
-  );
-
+  console.log(selectedPlacesAndTags);
   // it works
   const tagArray = await sql`
-    SELECT name, address, image, description FROM places WHERE id = ${tag} RETURNING name, address, image, description
+    SELECT name, address, image, description FROM places WHERE id = ${tag} 
   `;
 
   console.log('tagArray', tagArray);
 
   return sql`
-    INSERT INTO entries (journey_id, place_id) VALUES (${journeyId}, ${tag})
+    INSERT INTO entries (journey_id, place_id) VALUES (${journeyId}, ${tag}) 
   `;
 }

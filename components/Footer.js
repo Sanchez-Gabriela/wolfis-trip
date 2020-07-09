@@ -3,7 +3,6 @@ import Link from 'next/link';
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
-import About from '../pages/about';
 
 export default function Footer() {
   const social = css`
@@ -103,8 +102,8 @@ export default function Footer() {
               Contact Us
             </a>
           </Link>
-          <a href="#a" css={inst}>
-            i
+          <a href="https://github.com/Sanchez-Gabriela" css={inst}>
+            g
           </a>
           <a href="https://twitter.com/gab_veg" css={tweet}>
             t
