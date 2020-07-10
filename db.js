@@ -70,6 +70,7 @@ function getRandomItem(arr) {
 
 export async function insertEntries(tagIds, journeyId) {
   // selectedTags shows me a places_id column where tags_id is 7 for all of them
+  console.log(tagIds);
   const placesAndTags = await sql`
     SELECT places_id, tags_id FROM places_tags WHERE tags_id IN (${tagIds})
   `;
@@ -85,15 +86,20 @@ export async function insertEntries(tagIds, journeyId) {
     selectedPlacesAndTags.push(selectedPlaceAndTag);
   });
 
-  console.log(selectedPlacesAndTags);
-  // it works
+  console.log('I need places_id', selectedPlacesAndTags);
+
+  const places = selectedPlacesAndTags.map((place_id) => {
+    return Number(place_id.places_id);
+  });
+  console.log('places', places);
+
   const tagArray = await sql`
-    SELECT name, address, image, description FROM places WHERE id = ${tag} 
+    SELECT name, address, image, description FROM places WHERE id IN (${places})
   `;
 
   console.log('tagArray', tagArray);
 
   return sql`
-    INSERT INTO entries (journey_id, place_id) VALUES (${journeyId}, ${tag}) 
+    INSERT INTO entries (journey_id, place_id) VALUES (${journeyId}, ${places})
   `;
 }

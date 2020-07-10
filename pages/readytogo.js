@@ -46,7 +46,7 @@ export default function readytogo(props) {
       <div css={header}>
         <p css={quote}>Enjoy Vienna!</p>
         <ul>
-          {props.entries.map((value) => {
+          {props.tagArray.map((value) => {
             return (
               <>
                 <li>Name: {value.name}</li>
@@ -67,10 +67,10 @@ export default function readytogo(props) {
 //   console.log(context);
 //   const { insertEntries } = await import('../db.js');
 
-//   const entries = await insertEntries();
+//   const tagArray = await insertEntries();
 //   return {
 //     props: {
-//       entries,
+//       tagArray,
 //     },
 //   };
 // }

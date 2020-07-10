@@ -41,6 +41,10 @@ export default function App() {
       <div>
         <p css={quote}>Get your personalized plan based on your interests!</p>
       </div>
+      <link
+        href="https://fonts.googleapis.com/css?family=Lato"
+        rel="stylesheet"
+      />
       <Footer />
     </div>
   );
