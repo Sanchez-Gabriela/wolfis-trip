@@ -63,14 +63,14 @@ export default function readytogo(props) {
   );
 }
 
-// export async function getServerSideProps(context) {
-//   console.log(context);
-//   const { insertEntries } = await import('../db.js');
+export async function getServerSideProps(context) {
+  console.log(context);
+  const { insertEntries } = await import('../db.js');
 
-//   const tagArray = await insertEntries();
-//   return {
-//     props: {
-//       tagArray,
-//     },
-//   };
-// }
+  const tagArray = await insertEntries();
+  return {
+    props: {
+      tagArray,
+    },
+  };
+}

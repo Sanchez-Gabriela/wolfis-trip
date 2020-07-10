@@ -99,7 +99,9 @@ export async function insertEntries(tagIds, journeyId) {
 
   console.log('tagArray', tagArray);
 
-  return sql`
-    INSERT INTO entries (journey_id, place_id) VALUES (${journeyId}, ${places})
+  await sql`
+    INSERT INTO entriesTags (journey_id, place_id)
+    SELECT ${journeyId}, x
+      FROM unnest(ARRAY[${places}]) x
   `;
 }
