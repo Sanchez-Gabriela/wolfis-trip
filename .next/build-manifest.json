@@ -24,7 +24,7 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/login": [
+    "/readytogo": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

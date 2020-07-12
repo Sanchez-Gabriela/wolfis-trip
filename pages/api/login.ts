@@ -3,7 +3,6 @@ import { serialize } from 'cookie';
 import { selectUserByUsername, insertSession } from '../../db';
 import { hashPassword, verifyHashMatchesPassword } from '../../hashing';
 import { NextApiRequest, NextApiResponse } from 'next';
-import JsCookie from 'js-cookie';
 
 export default async function login(req: NextApiRequest, res: NextApiResponse) {
   // TODO: To secure your application even further,

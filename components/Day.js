@@ -72,7 +72,7 @@ function Day({ dayLabel, date }) {
         }),
         background: getColorFn({
           selectedFirstOrLastColor: '#4abdac',
-          normalColor: '#FFFFFF',
+          normalColor: '#ffff',
           selectedColor: '#4abdac',
           rangeHoverColor: '#4abdac',
           disabledColor: '#FFFFFF',

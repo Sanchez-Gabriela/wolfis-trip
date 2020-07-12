@@ -7,5 +7,5 @@ export default async function tag(req: NextApiRequest, res: NextApiResponse) {
   console.log('tags.ts:', placeIds);
   const journeyId = req.body.journeyId;
   const tags = await insertEntries(placeIds, journeyId);
-  res.json(tags[0]);
+  res.json(tags);
 }

@@ -75,7 +75,7 @@ export default function Datepicker(props) {
           fontFamily: 'Karla',
           display: 'grid',
           margin: '32px 0 0',
-          gridTemplateColumns: `repeat(${activeMonths.length}, 300px)`,
+          gridTemplateColumns: `repeat(${activeMonths.length}, 200px)`,
           gridGap: '0 64px',
         }}
       >

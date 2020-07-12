@@ -73,7 +73,7 @@ const button = css`
 `;
 
 const selectButton = css`
-  width: 10%;
+  width: 70px;
   font-family: 'Karla', sans-serif;
   text-align: center;
   margin-top: 40px;
@@ -136,7 +136,7 @@ export default function Interests(props) {
       <div css={app}>
         <Header />
         <div css={main}>
-          <h2 css={h2}>1. Choose the dates you would like to plan </h2>
+          <h2 css={h2}>1. Choose your dates </h2>
           <div css={calendar}>
             <Datepicker state={state} setState={setState} />
           </div>
@@ -181,6 +181,7 @@ export default function Interests(props) {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',
+                      Accept: 'application/json',
                     },
                     body: JSON.stringify({
                       journeyId: 1,
@@ -195,6 +196,7 @@ export default function Interests(props) {
                     })
                     .then((json) => {
                       console.log(json);
+                      JSON.stringify(json);
                     });
                 }}
                 css={selectButton}
