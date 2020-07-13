@@ -108,6 +108,6 @@ exports.up = async (sql) => {
 
 exports.down = async (sql) => {
   sql`
-		DELETE FROM places_tags WHERE places_id '1'
+		DELETE FROM places_tags WHERE places_id = '1'
 	`;
 };

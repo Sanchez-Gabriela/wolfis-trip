@@ -64,10 +64,10 @@ export default function readytogo(props) {
 }
 
 export async function getServerSideProps(context) {
-  console.log(context);
+  console.log('context', context.params);
   const { insertEntries } = await import('../db.js');
 
-  const tagArray = await insertEntries([]);
+  const tagArray = await insertEntries();
   return {
     props: {
       tagArray,

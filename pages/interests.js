@@ -18,7 +18,7 @@ const app = css`
   font-weight: 400;
   font-family: 'Karla', sans-serif;
   width: 100%;
-  position: absolute;
+  position: relative;
 `;
 
 const h2 = css`
@@ -42,7 +42,6 @@ const readyToGo = css`
   font-size: 40px;
   text-decoration: none;
   font-family: 'Karla', sans-serif;
-  margin-left: 40%;
 `;
 
 const calendar = css`
@@ -56,7 +55,7 @@ const main = css`
 `;
 
 const divToGo = css`
-  margin-top: 70px;
+  margin-top: 200px;
 `;
 
 const button = css`

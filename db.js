@@ -73,7 +73,7 @@ export async function insertEntries(tagIds, journeyId) {
   const placesAndTags = await sql`
     SELECT places_id, tags_id FROM places_tags WHERE tags_id IN (${tagIds})
   `;
-
+  console.log('placesandTags:', placesAndTags);
   console.log('tagIds', tagIds);
   // tag gives a random number from the places_id column
   const selectedPlacesAndTags = [];
@@ -84,13 +84,16 @@ export async function insertEntries(tagIds, journeyId) {
     });
     const selectedPlaceAndTag = getRandomItem(placesByTag);
     selectedPlacesAndTags.push(selectedPlaceAndTag);
+    console.log('selectedplaces:', selectedPlacesAndTags);
   });
 
+  console.log('selectedplaces:', selectedPlacesAndTags);
   const places = selectedPlacesAndTags.map((place_id) => {
-    return Number(place_id.places_id);
+    console.log(place_id);
+    return place_id.places_id;
   });
 
-  console.log(places);
+  console.log('places', places);
   const tagArray = await sql`
     SELECT name, address, image, description FROM places WHERE id IN (${places}) 
   `;
@@ -102,5 +105,4 @@ export async function insertEntries(tagIds, journeyId) {
     SELECT ${journeyId}, x
       FROM unnest(ARRAY[${places}]) x
   `;
-  return tagArray;
 }
