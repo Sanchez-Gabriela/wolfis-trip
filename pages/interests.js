@@ -183,10 +183,10 @@ export default function Interests(props) {
                       Accept: 'application/json',
                     },
                     body: JSON.stringify({
-                      journeyId: 1,
                       placeIds: selected.map((tag) => {
                         return tag.value;
-                      }), // I'm getting the [values]
+                      }),
+                      journeyId: Date.now(), // I'm getting the [values]
                     }), // body data type must match "Content-Type" header
                   })
                     .then((response) => {
@@ -206,11 +206,11 @@ export default function Interests(props) {
           </div>
         </div>
         <div css={divToGo}>
-          <Link href={'/readytogo'}>
+          {/* <Link href={'/journey/'}>
             <a href="#a" css={readyToGo}>
               Get your plan! &#x0226B;
             </a>
-          </Link>
+          </Link> */}
         </div>
         <Footer />
       </div>
@@ -219,12 +219,12 @@ export default function Interests(props) {
 }
 
 // export async function getServerSideProps(context) {
-//   const { login } = await import('../api/login.ts');
+//   const { insertEntries } = await import('../db');
 
-//   const user = await login();
+//   const journeyId = await insertEntries();
 //   return {
 //     props: {
-//       login,
+//       journeyId,
 //     },
 //   };
 // }

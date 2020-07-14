@@ -78,9 +78,9 @@ export default function Footer() {
   const footer = css`
     width: 100%;
     display: inline-block;
-    height: 70px;
+    height: 50px;
     background-color: #999;
-    ${'' /* position: relative; */}
+    position: absolute;
     bottom: 0;
     height: 2.5rem;
   `;

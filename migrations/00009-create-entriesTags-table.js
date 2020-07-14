@@ -2,7 +2,7 @@ exports.up = async (sql) => {
   sql`
     CREATE TABLE entriesTags(
       id SERIAL PRIMARY KEY,
-      journey_id VARCHAR,
+      journey_id BIGINT,
       place_id VARCHAR
     )	
   `;

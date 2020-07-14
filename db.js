@@ -75,6 +75,7 @@ export async function insertEntries(tagIds, journeyId) {
   `;
   console.log('placesandTags:', placesAndTags);
   console.log('tagIds', tagIds);
+
   // tag gives a random number from the places_id column
   const selectedPlacesAndTags = [];
   tagIds.forEach((tagId) => {
@@ -105,4 +106,12 @@ export async function insertEntries(tagIds, journeyId) {
     SELECT ${journeyId}, x
       FROM unnest(ARRAY[${places}]) x
   `;
+
+  return places;
 }
+
+// export async function journeysUser() {
+//   const journeys = await sql`
+//     SELECT FROM entriesTags journey_Id;
+//   `;
+// }
