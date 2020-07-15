@@ -107,11 +107,51 @@ export async function insertEntries(tagIds, journeyId) {
       FROM unnest(ARRAY[${places}]) x
   `;
 
-  return places;
+  return tagArray;
 }
 
+export async function sessionsJoinENtries(token) {
+  const trip = await sql`
+    SELECT 
+      journeys.id as journey_id
+    FROM 
+      sessions,
+      users,
+      journeys
+    WHERE 
+      sessions.token = ${token} AND
+      users.id = sessions.user_id AND
+      journeys.user_id = users.id
+  `;
+  console.log(trip);
+}
 // export async function journeysUser() {
-//   const journeys = await sql`
-//     SELECT FROM entriesTags journey_Id;
+//   const journey = await sql`
+//     SELECT * FROM entriesTags WHERE journey_id = ${journeyId}
 //   `;
+//   console.log('lulu', journey);
+//   console.log('ajajajajaja', journeyId);
+//   return journey;
+// }
+
+// export async function personalizedPlan(places) {
+//   const plan = await sql`
+//     SELECT * FROM places WHERE
+//   `;
+// }
+// export async function selectUserByUsername(username, password) {
+//   const usersWithUsername = await sql`
+//   SELECT * FROM users WHERE username = ${username}
+//   `; //select from always returns an array, even if its one
+//   // console.log(usersWithUsername[0]);
+//   if (usersWithUsername.length === 0) return usersWithUsername;
+//   const passwordMatches = await argon2.verify(
+//     usersWithUsername[0].password_hash,
+//     password,
+//   ); //this returns boolean
+//   if (passwordMatches) {
+//     return usersWithUsername;
+//   } else {
+//     return [];
+//   }
 // }

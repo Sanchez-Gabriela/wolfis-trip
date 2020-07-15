@@ -9,6 +9,7 @@ import Datepicker from '../components/Datepicker';
 import Header from '../components/Header';
 import { START_DATE } from '@datepicker-react/hooks';
 import Cookie from 'js-cookie';
+
 //================================================================================
 // Style
 //================================================================================
@@ -92,7 +93,7 @@ const tags = css`
 // Function
 //================================================================================
 
-export default function Interests(props) {
+export default function Interests(journeyId) {
   // fetch(
   //   'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD &srsName=EPSG:4326&outputFormat=json',
   // )
@@ -206,11 +207,11 @@ export default function Interests(props) {
           </div>
         </div>
         <div css={divToGo}>
-          {/* <Link href={'/journey/'}>
+          <Link href={'/journey/' + journeyId.journey_id}>
             <a href="#a" css={readyToGo}>
               Get your plan! &#x0226B;
             </a>
-          </Link> */}
+          </Link>
         </div>
         <Footer />
       </div>
@@ -218,13 +219,13 @@ export default function Interests(props) {
   );
 }
 
-// export async function getServerSideProps(context) {
-//   const { insertEntries } = await import('../db');
+export async function getServerSideProps(context) {
+  const { sessionsJoinENtries } = await import('../db.js');
 
-//   const journeyId = await insertEntries();
-//   return {
-//     props: {
-//       journeyId,
-//     },
-//   };
-// }
+  const journey = await sessionsJoinENtries();
+  return {
+    props: {
+      journey,
+    },
+  };
+}
