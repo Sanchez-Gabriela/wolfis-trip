@@ -93,7 +93,7 @@ const tags = css`
 // Function
 //================================================================================
 
-export default function Interests(journeyId) {
+export default function Interests() {
   // fetch(
   //   'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD &srsName=EPSG:4326&outputFormat=json',
   // )
@@ -127,6 +127,8 @@ export default function Interests(journeyId) {
     focusedInput: START_DATE,
   });
 
+  const [journeyId, setJourneyId] = useState();
+
   return (
     <>
       <style>
@@ -159,13 +161,14 @@ export default function Interests(journeyId) {
                   return response.json();
                 })
                 .then((json) => {
-                  console.log(json);
+                  console.log(json.id);
+                  setJourneyId(json.id);
                 });
             }}
           >
             submit
           </button>
-          <div css={tags}>
+          <div css={tags} hidden={!journeyId}>
             <h2 css={h2}>2. What are your interests:</h2>
             <div css={dropdown}>
               <pre>{JSON.stringify(selected)}</pre>
@@ -187,7 +190,7 @@ export default function Interests(journeyId) {
                       placeIds: selected.map((tag) => {
                         return tag.value;
                       }),
-                      journeyId: Date.now(), // I'm getting the [values]
+                      journeyId: journeyId,
                     }), // body data type must match "Content-Type" header
                   })
                     .then((response) => {
@@ -207,7 +210,7 @@ export default function Interests(journeyId) {
           </div>
         </div>
         <div css={divToGo}>
-          <Link href={'/journey/' + journeyId.journey_id}>
+          <Link href={'/journey/' + journeyId}>
             <a href="#a" css={readyToGo}>
               Get your plan! &#x0226B;
             </a>
@@ -219,13 +222,13 @@ export default function Interests(journeyId) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const { sessionsJoinENtries } = await import('../db.js');
+// export async function getServerSideProps(context) {
+//   const { sessionsJoinENtries } = await import('../db.js');
 
-  const journey = await sessionsJoinENtries();
-  return {
-    props: {
-      journey,
-    },
-  };
-}
+//   const trip = await sessionsJoinENtries();
+//   return {
+//     props: {
+//       trip,
+//     },
+//   };
+// }

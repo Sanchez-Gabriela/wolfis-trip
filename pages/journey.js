@@ -5,7 +5,7 @@ import Header from '../components/Header';
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
 
-export default function userPlan(props) {
+export default function userPlan(plan) {
   const header = css`
     width: 100%;
     background-color: #4abdac;
@@ -46,7 +46,7 @@ export default function userPlan(props) {
       <div css={header}>
         <p css={quote}>Enjoy Vienna!</p>
         <ul>
-          {props.trip.map((value) => {
+          {plan.map((value) => {
             return (
               <>
                 <li>Name: {value.name}</li>
@@ -64,13 +64,12 @@ export default function userPlan(props) {
 }
 
 export async function getServerSideProps(context) {
-  console.log('context', context.params);
-  const { journeysUser } = await import('../db.js');
+  const { personalizedPlan } = await import('../db.js');
 
-  const journey = await journeysUser();
+  const plan = await personalizedPlan();
   return {
     props: {
-      journey,
+      plan,
     },
   };
 }

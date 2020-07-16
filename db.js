@@ -102,7 +102,7 @@ export async function insertEntries(tagIds, journeyId) {
   console.log('tagArray', tagArray);
 
   await sql`
-    INSERT INTO entriesTags (journey_id, place_id)
+    INSERT INTO journeys_places (journey_id, place_id)
     SELECT ${journeyId}, x
       FROM unnest(ARRAY[${places}]) x
   `;
@@ -121,18 +121,29 @@ export async function sessionsJoinENtries(token) {
     WHERE 
       sessions.token = ${token} AND
       users.id = sessions.user_id AND
-      journeys.user_id = users.id
+      journeys.user_id = users.id;
   `;
-  console.log(trip);
+  console.log('meme', trip);
+
+  return trip;
 }
-// export async function journeysUser() {
-//   const journey = await sql`
-//     SELECT * FROM entriesTags WHERE journey_id = ${journeyId}
-//   `;
-//   console.log('lulu', journey);
-//   console.log('ajajajajaja', journeyId);
-//   return journey;
-// }
+
+export async function personalizedPlan(journeyId) {
+  const plan = await sql`
+    SELECT 
+      places.name,  
+      places.address, 
+      places.image,
+      places.description 
+    FROM 
+      places,
+      journeys_places 
+    WHERE 
+      places.id = journeys_places.place_id AND 
+      journeys_places.journey_id = ${journeyId}
+  `;
+  return plan;
+}
 
 // export async function personalizedPlan(places) {
 //   const plan = await sql`
