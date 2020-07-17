@@ -69,6 +69,7 @@ function getRandomItem(arr) {
 }
 
 export async function insertEntries(tagIds, journeyId) {
+  console.log('fromCrazyFunction', journeyId);
   // selectedTags shows me places_id column based tags_id
   const placesAndTags = await sql`
     SELECT places_id, tags_id FROM places_tags WHERE tags_id IN (${tagIds})
@@ -111,6 +112,7 @@ export async function insertEntries(tagIds, journeyId) {
 }
 
 export async function sessionsJoinENtries(token) {
+  console.log(('token', token));
   const trip = await sql`
     SELECT 
       journeys.id as journey_id
@@ -129,6 +131,7 @@ export async function sessionsJoinENtries(token) {
 }
 
 export async function personalizedPlan(journeyId) {
+  console.log('from databas', journeyId);
   const plan = await sql`
     SELECT 
       places.name,  
@@ -142,27 +145,6 @@ export async function personalizedPlan(journeyId) {
       places.id = journeys_places.place_id AND 
       journeys_places.journey_id = ${journeyId}
   `;
+  console.log('from databas', journeyId);
   return plan;
 }
-
-// export async function personalizedPlan(places) {
-//   const plan = await sql`
-//     SELECT * FROM places WHERE
-//   `;
-// }
-// export async function selectUserByUsername(username, password) {
-//   const usersWithUsername = await sql`
-//   SELECT * FROM users WHERE username = ${username}
-//   `; //select from always returns an array, even if its one
-//   // console.log(usersWithUsername[0]);
-//   if (usersWithUsername.length === 0) return usersWithUsername;
-//   const passwordMatches = await argon2.verify(
-//     usersWithUsername[0].password_hash,
-//     password,
-//   ); //this returns boolean
-//   if (passwordMatches) {
-//     return usersWithUsername;
-//   } else {
-//     return [];
-//   }
-// }

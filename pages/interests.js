@@ -22,6 +22,24 @@ const app = css`
   position: relative;
 `;
 
+// .container {
+//   min-height: 100vh;
+//   padding: 0 0.5rem;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+// }
+// main {
+//   padding: 5rem 0;
+//   flex: 1;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   padding-top: 20px;
+// }
+
 const h2 = css`
   color: #4abdac;
   font-family: 'Karla', sans-serif;
@@ -43,6 +61,7 @@ const readyToGo = css`
   font-size: 40px;
   text-decoration: none;
   font-family: 'Karla', sans-serif;
+  margin-left: 40%;
 `;
 
 const calendar = css`
@@ -55,9 +74,7 @@ const main = css`
   margin-top: 50px;
 `;
 
-const divToGo = css`
-  margin-top: 200px;
-`;
+const divToGo = css``;
 
 const button = css`
   width: 5%;
@@ -221,14 +238,3 @@ export default function Interests() {
     </>
   );
 }
-
-// export async function getServerSideProps(context) {
-//   const { sessionsJoinENtries } = await import('../db.js');
-
-//   const trip = await sessionsJoinENtries();
-//   return {
-//     props: {
-//       trip,
-//     },
-//   };
-// }

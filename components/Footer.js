@@ -80,9 +80,9 @@ export default function Footer() {
     display: inline-block;
     height: 50px;
     background-color: #999;
-    position: relative;
+    position: absolute;
     bottom: 0;
-    height: 2.5rem;
+    height: 1rem;
   `;
 
   return (
