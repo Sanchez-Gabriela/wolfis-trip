@@ -45,6 +45,7 @@ export default function Footer() {
     background-color: #4abdac;
     font-size: 0.8em;
     width: 40%;
+    font-family: 'Comfortaa', cursive;
   `;
 
   const linked = css`
@@ -64,15 +65,16 @@ export default function Footer() {
     color: white;
     font-size: 14px;
     letter-spacing: 1px;
-    padding-top: 10px;
-    padding-bottom: 29px;
     background-color: #999;
+    padding-top: 10px;
+    padding-bottom: 15px;
   `;
 
   const copyright = css`
-    width: 50%;
     float: left;
-    font-family: 'Karla', sans-serif;
+    font-family: 'Comfortaa', cursive;
+    background-color: #999;
+    width: 50%;
   `;
 
   const footer = css`
@@ -80,16 +82,23 @@ export default function Footer() {
     display: inline-block;
     height: 50px;
     background-color: #999;
-    position: absolute;
     bottom: 0;
     height: 1rem;
   `;
 
   return (
     <>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      ></link>
       <style>
         @import
         url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+      </style>
+      <style>
+        @import
+        url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Righteous&display=swap');
       </style>
       <footer css={footer}>
         <div css={copyright}>
@@ -102,13 +111,13 @@ export default function Footer() {
             </a>
           </Link>
           <a href="https://github.com/Sanchez-Gabriela" css={inst}>
-            g
+            <i class="fa fa-github" style={{ fontSize: '20px' }}></i>
           </a>
           <a href="https://twitter.com/gab_veg" css={tweet}>
-            t
+            <i class="fa fa-twitter" style={{ fontSize: '20px' }}></i>
           </a>
           <a href="#a" css={linked}>
-            in
+            <i class="fa fa-linkedin" style={{ fontSize: '20px' }}></i>
           </a>
         </div>
       </footer>

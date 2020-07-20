@@ -1,32 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
 
 export default function Weather() {
-  fetch(
-    'https://weatherbit-v1-mashape.p.rapidapi.com/current?lang=en&lon=%3Crequired%3E&lat=%3Crequired%3E',
-    {
-      method: 'GET',
-      headers: {
-        'x-rapidapi-host': 'weatherbit-v1-mashape.p.rapidapi.com',
-        'x-rapidapi-key': 'f7f09d4e45msh8f728dc301706a0p1654c7jsndadd5fc6c4d8',
-      },
-    },
-  )
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
+  const [weather, setWeather] = useState([]);
+  useEffect(() => {
+    const getWeather = async () => {
+      const response = await fetch(
+        'http://api.openweathermap.org/data/2.5/weather?q=Vienna&APPID=ffc63954e8b3eb859d3685f92e76982b&units=metric',
+      );
+      const jsonResponse = await response.json();
+      setWeather(jsonResponse);
+    };
+    getWeather();
+  }, []);
   return (
     <div>
       <style>
         @import
         url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
       </style>
+      <div>
+        <p>Weather in Vienna</p>
+        <ul>
+          {/* {weather.map((main) => {
+            return <li key={`${main.temp}`}></li>;
+          })} */}
+        </ul>
+      </div>
     </div>
   );
 }

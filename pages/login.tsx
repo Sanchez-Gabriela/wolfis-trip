@@ -15,12 +15,16 @@ import Cookie from 'js-cookie';
 //================================================================================
 
 const app = css`
-  min-height: 100vh;
-  font-weight: 400;
-  font-family: 'Karla', sans-serif;
-  width: 100%;
-  position: absolute;
+  box-sizing: content-box;
+  padding: 0;
+  margin: 0;
 `;
+
+const main = css`
+  min-height: 63.5vh;
+  padding: 0 0.5rem;
+`;
+
 const form = css`
   background: #f7b733;
   width: 200px;
@@ -105,7 +109,7 @@ export default function Login() {
         if (json.loggedIn === false) {
           setStatus('Failed logging in - check username and password');
         } else {
-          setStatus('Logged in!');
+          setStatus('loading...');
           setTimeout(() => {
             Router.replace('/interests');
           }, 2000);
@@ -118,40 +122,46 @@ export default function Login() {
 
   return (
     <>
+      <style>
+        @import
+        url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+      </style>
       <div css={app}>
         <Link href={'/index'}>
           <a href="#a" css={logo}>
             Wolfi
           </a>
         </Link>
-        <form method="POST" css={form} onSubmit={onSubmit}>
-          <input
-            css={input}
-            onChange={(event) => setUsername(event.target.value)}
-            placeholder="username"
-            name="username"
-          />
+        <div css={main}>
+          <form method="POST" css={form} onSubmit={onSubmit}>
+            <input
+              css={input}
+              onChange={(event) => setUsername(event.target.value)}
+              placeholder="username"
+              name="username"
+            />
 
-          <input
-            css={input}
-            placeholder="Password"
-            type="password"
-            name="password"
-            onChange={(event) => setPassword(event.target.value)}
-          />
-          <button css={button}> LOGIN</button>
-        </form>
-        <p>{status}</p>
-        <a href="#a" css={forgottenPass}>
-          I forgot my password, send me an email &#x0226B;
-        </a>
-        <Link href={'/register'}>
+            <input
+              css={input}
+              placeholder="Password"
+              type="password"
+              name="password"
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            <button css={button}> LOGIN</button>
+          </form>
+          <p>{status}</p>
           <a href="#a" css={forgottenPass}>
-            Register &#x0226B;
+            I forgot my password, send me an email &#x0226B;
           </a>
-        </Link>
+          <Link href={'/register'}>
+            <a href="#a" css={forgottenPass}>
+              Register &#x0226B;
+            </a>
+          </Link>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 }

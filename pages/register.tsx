@@ -14,12 +14,16 @@ type Props = {
 
 export default function Register(props: Props) {
   const app = css`
-    min-height: 100vh;
-    font-weight: 400;
-    font-family: 'Karla', sans-serif;
-    width: 100%;
-    position: absolute;
+    box-sizing: content-box;
+    padding: 0;
+    margin: 0;
   `;
+
+  const main = css`
+    padding: 0 0.5rem;
+    min-height: 65vh;
+  `;
+
   const form = css`
     background: #f7b733;
     width: 15%;
@@ -78,23 +82,25 @@ export default function Register(props: Props) {
       </Head>
       <div css={app}>
         <Header />
-        <form method="POST" css={form}>
-          <input name="username" css={input} />
-          <input name="password" type="password" css={input} />
-          <input type="hidden" name="csrf" value={props.csrfToken} />
+        <div css={main}>
+          <form method="POST" css={form}>
+            <input name="username" css={input} />
+            <input name="password" type="password" css={input} />
+            <input type="hidden" name="csrf" value={props.csrfToken} />
 
-          <button css={button}>REGISTER</button>
-        </form>
-        <a href="#a" css={forgottenPass}>
-          I forgot my password, send me an email &#x0226B;
-        </a>
-        <Link href={'/login'}>
+            <button css={button}>REGISTER</button>
+          </form>
           <a href="#a" css={forgottenPass}>
-            I already have an Account &#x0226B;
+            I forgot my password, send me an email &#x0226B;
           </a>
-        </Link>
+          <Link href={'/login'}>
+            <a href="#a" css={forgottenPass}>
+              I already have an Account &#x0226B;
+            </a>
+          </Link>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 }

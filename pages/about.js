@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 export default function About() {
   const p = css`
     font-size: 30px;
+    font-family: 'Karla', sans-serif;
   `;
 
   const app = css`
@@ -19,12 +20,16 @@ export default function About() {
 
   return (
     <div>
+      <style>
+        @import
+        url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+      </style>
       <Header />
       <div css={app}>
         <p css={p}>
-          Wolfi'S App saves you time and makes your journey more interesting!{' '}
+          Wolfi helps you saving time and makes your journey more exciting!{' '}
           <br />
-          Wolfi schedule your days with the activities you might like.
+          Wolfi schedule your days according to your taste.
         </p>
       </div>
       <Footer />

@@ -4,7 +4,6 @@ import Head from 'next/head';
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
-import cookies from 'js-cookie';
 
 export default function Header() {
   const logo = css`
@@ -34,6 +33,11 @@ export default function Header() {
     padding-right: 30px;
     padding-left: 20px;
     font-size: 1.5rem;
+    text-decoration: none;
+    color: #555555;
+    &:hover {
+      color: #ff847c;
+    }
   `;
 
   const navbarLinkList = css`
@@ -94,7 +98,9 @@ export default function Header() {
           {linkList.map((link) => {
             return (
               <Link key={link.url} href={link.url}>
-                <a css={links}>{link.name}</a>
+                <a href="#a" css={links}>
+                  {link.name}
+                </a>
               </Link>
             );
           })}

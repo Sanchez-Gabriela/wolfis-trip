@@ -135,14 +135,17 @@ export default function Interests() {
   //multiselector
   const [selected, setSelected] = useState([]);
 
-  // console.log(selected);
-
   //calendar
   const [state, setState] = useState({
     startDate: null,
     endDate: null,
     focusedInput: START_DATE,
   });
+
+  //   const oneDay = 24 * 60 * 60 * 1000;
+  //   // hours*minutes*seconds*milliseconds
+  // const firstDate = new Date(start_date);
+  // const secondDate = new Date(end_date);
 
   const [journeyId, setJourneyId] = useState();
 
@@ -188,7 +191,7 @@ export default function Interests() {
           <div css={tags} hidden={!journeyId}>
             <h2 css={h2}>2. What are your interests:</h2>
             <div css={dropdown}>
-              <pre>{JSON.stringify(selected)}</pre>
+              <pre hidden>{JSON.stringify(selected)}</pre>
               <MultiSelect
                 options={options}
                 value={selected}

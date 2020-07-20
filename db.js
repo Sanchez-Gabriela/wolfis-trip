@@ -131,7 +131,6 @@ export async function sessionsJoinENtries(token) {
 }
 
 export async function personalizedPlan(journeyId) {
-  console.log('from databas', journeyId);
   const plan = await sql`
     SELECT 
       places.name,  
@@ -145,6 +144,5 @@ export async function personalizedPlan(journeyId) {
       places.id = journeys_places.place_id AND 
       journeys_places.journey_id = ${journeyId}
   `;
-  console.log('from databas', journeyId);
   return plan;
 }

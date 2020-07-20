@@ -6,9 +6,24 @@ import Footer from '../components/Footer';
 import { jsx, css } from '@emotion/core';
 
 export default function App() {
+  const app = css`
+    box-sizing: content-box;
+    padding: 0;
+    margin: 0;
+  `;
+
+  const main = css`
+    min-height: 79vh;
+    padding: 0 0.5rem;
+  `;
+
   const header = css`
     width: 100%;
     background-color: #4abdac;
+    -webkit-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+    -moz-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+    box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+    animation: slideUp 2000ms ease;
   `;
   const img = css`
     width: 500px;
@@ -34,18 +49,20 @@ export default function App() {
         @import
         url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
       </style>
-      <Header />
-      <div css={header}>
-        <img src="/wien.png" alt="vienna city" css={img} />
+      <div css={app}>
+        <Header />
+        <div css={main}>
+          <div css={header}>
+            <img src="/wien.png" alt="vienna city" css={img} />
+          </div>
+          <div>
+            <p css={quote}>
+              Get your personalized plan based on your interests!
+            </p>
+          </div>
+        </div>
+        <Footer />
       </div>
-      <div>
-        <p css={quote}>Get your personalized plan based on your interests!</p>
-      </div>
-      <link
-        href="https://fonts.googleapis.com/css?family=Lato"
-        rel="stylesheet"
-      />
-      <Footer />
     </div>
   );
 }
