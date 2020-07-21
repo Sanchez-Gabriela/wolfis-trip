@@ -9,6 +9,7 @@ import Datepicker from '../components/Datepicker';
 import Header from '../components/Header';
 import { START_DATE } from '@datepicker-react/hooks';
 import Cookie from 'js-cookie';
+import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns';
 
 //================================================================================
 // Style
@@ -142,10 +143,46 @@ export default function Interests() {
     focusedInput: START_DATE,
   });
 
-  //   const oneDay = 24 * 60 * 60 * 1000;
-  //   // hours*minutes*seconds*milliseconds
-  // const firstDate = new Date(start_date);
-  // const secondDate = new Date(end_date);
+  const result = differenceInCalendarDays(state.endDate, state.startDate);
+  const resultDays = result + 1;
+  // alert('You have selected ' + resultDays + 'day(s)');
+  console.log(resultDays);
+
+  // const datesInInterval = eachDayOfInterval({
+  //   start: state.startDate,
+  //   end: state.endDate,
+  // });
+  // console.log(datesInInterval);
+
+  ///////////////////////////////////////////////////////////////////////////////////////
+  //Get days between 2 dates manually
+  ///////////////////////////////////////////////////////////////////////////////////////
+
+  // if (state.startDate !== null && state.endDate !== null) {
+  //   let userFirstDate = state.startDate;
+  //   let userSecondDate = state.endDate;
+
+  //   // adjust 0 before single digit date
+  //   let firstDay = ('0' + userFirstDate.getDate()).slice(-2);
+  //   let secondDay = ('0' + userSecondDate.getDate()).slice(-2);
+
+  //   // current month
+  //   let firstMonth = ('0' + (userFirstDate.getMonth() + 1)).slice(-2);
+  //   let secondMonth = ('0' + (userFirstDate.getMonth() + 1)).slice(-2);
+
+  //   // current year
+  //   let year = userFirstDate.getFullYear();
+
+  //   // prints date in YYYY-MM-DD format
+  //   const firstJourneyDay = firstMonth + '-' + firstDay + '-' + year;
+  //   const secondJourneyDay = secondMonth + '-' + secondDay + '-' + year;
+
+  //   const date1 = new Date(firstJourneyDay);
+  //   const date2 = new Date(secondJourneyDay);
+  //   const diffTime = Math.abs(date2 - date1);
+  //   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 18));
+  //   alert('You have selected ' + diffDays + ' day(s)');
+  // }
 
   const [journeyId, setJourneyId] = useState();
 
@@ -188,6 +225,7 @@ export default function Interests() {
           >
             submit
           </button>
+          {/* <p>{datesInInterval}</p> */}
           <div css={tags} hidden={!journeyId}>
             <h2 css={h2}>2. What are your interests:</h2>
             <div css={dropdown}>

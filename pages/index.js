@@ -45,10 +45,16 @@ export default function App() {
 
   return (
     <div>
-      <style>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Karla&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      {/* <style>
         @import
-        url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
-      </style>
+        url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
+      </style> */}
       <div css={app}>
         <Header />
         <div css={main}>

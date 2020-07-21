@@ -112,7 +112,6 @@ export async function insertEntries(tagIds, journeyId) {
 }
 
 export async function sessionsJoinENtries(token) {
-  console.log(('token', token));
   const trip = await sql`
     SELECT 
       journeys.id as journey_id
@@ -125,7 +124,6 @@ export async function sessionsJoinENtries(token) {
       users.id = sessions.user_id AND
       journeys.user_id = users.id;
   `;
-  console.log('meme', trip);
 
   return trip;
 }

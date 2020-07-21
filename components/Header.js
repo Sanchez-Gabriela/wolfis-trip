@@ -82,10 +82,10 @@ export default function Header() {
 
   return (
     <div>
-      <style>
+      {/* <style>
         @import
         url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
-      </style>
+      </style> */}
       <div css={navbar}>
         <div className="logo-header">
           <Link href={'/index'}>

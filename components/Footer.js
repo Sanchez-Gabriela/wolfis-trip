@@ -45,7 +45,7 @@ export default function Footer() {
     background-color: #4abdac;
     font-size: 0.8em;
     width: 40%;
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Karla', cursive;
   `;
 
   const linked = css`
@@ -72,7 +72,7 @@ export default function Footer() {
 
   const copyright = css`
     float: left;
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Karla', cursive;
     background-color: #999;
     width: 50%;
   `;
@@ -88,18 +88,16 @@ export default function Footer() {
 
   return (
     <>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      ></link>
-      <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
-      </style>
-      <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Righteous&display=swap');
-      </style>
+      <div>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        ></link>
+        <link
+          href="https://fonts.googleapis.com/css2?  family=Comfortaa:wght@300&family=Karla&display=swap"
+          rel="stylesheet"
+        ></link>
+      </div>
       <footer css={footer}>
         <div css={copyright}>
           <p css={paragh}>&copy; 2020 - Sánchez</p>
@@ -111,13 +109,13 @@ export default function Footer() {
             </a>
           </Link>
           <a href="https://github.com/Sanchez-Gabriela" css={inst}>
-            <i class="fa fa-github" style={{ fontSize: '20px' }}></i>
+            <i className="fa fa-github" style={{ fontSize: '20px' }}></i>
           </a>
           <a href="https://twitter.com/gab_veg" css={tweet}>
-            <i class="fa fa-twitter" style={{ fontSize: '20px' }}></i>
+            <i className="fa fa-twitter" style={{ fontSize: '20px' }}></i>
           </a>
           <a href="#a" css={linked}>
-            <i class="fa fa-linkedin" style={{ fontSize: '20px' }}></i>
+            <i className="fa fa-linkedin" style={{ fontSize: '20px' }}></i>
           </a>
         </div>
       </footer>

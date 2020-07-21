@@ -6,7 +6,7 @@ import Header from '../../components/Header';
 import { jsx, css } from '@emotion/core';
 import Footer from '../../components/Footer';
 
-export default function userPlan({ plan }) {
+export default function Userplan({ plan }) {
   const app = css`
     box-sizing: content-box;
     padding: 0;
@@ -21,19 +21,21 @@ export default function userPlan({ plan }) {
 
   const quote = css`
     font-size: 2rem;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: #555555;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #4abdac;
     display: inline-block;
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Karla', cursive;
+    font-size: 36px;
   `;
 
   const journey = css`
-    width: 80%;
+    width: 100%;
+    margin: auto;
   `;
 
   const text = css`
-    font-family: 'Karla', sans-serif;
+    font-family: 'Karla', cursive;
     font-size: 20px;
     line-height: 2;
     list-style-type: none;
@@ -42,18 +44,17 @@ export default function userPlan({ plan }) {
   `;
 
   const name = css`
-    font-family: 'Karla', sans-serif;
+    font-family: 'Karla', cursive;
     font-size: 25px;
     line-height: 1.2;
     list-style-type: none;
     padding: 10px;
     color: #555555;
     border-bottom: 1.5px solid #4abdac;
-    }
   `;
 
   const img = css`
-    width: 400px;
+    width: 70%;
     background-color: $coral;
     -webkit-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
     -moz-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
@@ -80,6 +81,7 @@ export default function userPlan({ plan }) {
     animation: slideUp 2000ms ease;
     margin-bottom: 20px;
     border-radius: 4px;
+    margin-left: 25%;
   `;
 
   const description = css`
@@ -89,7 +91,9 @@ export default function userPlan({ plan }) {
     margin-top: 10px;
     font-family: 'Karla', sans-serif;
     color: #555555;
-    line-height: 1.8;
+    line-height: 2;
+    text-align: left;
+    font-size: 20px;
   `;
 
   const icon = css`
@@ -97,20 +101,19 @@ export default function userPlan({ plan }) {
     margin-left: 10px;
   `;
 
-  console.log(
-    'plan',
-    plan.map((value) => value.name),
-  );
+  const li = css`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  `;
   return (
     <div>
-      <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
-      </style>
-      <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
-      </style>
+      <div>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Karla&display=swap"
+          rel="stylesheet"
+        ></link>
+      </div>
       <div css={app}>
         <Header />
         <div css={main}>
@@ -122,14 +125,17 @@ export default function userPlan({ plan }) {
             <ul>
               {plan.map((value) => {
                 return (
-                  <>
-                    <li css={name}>{value.name}</li>
-                    <li css={text}>
+                  <li key={value.name} css={li}>
+                    <span css={name} role="img" aria-label="flag">
+                      {' '}
+                      🚩 {value.name}
+                    </span>
+                    <span css={text}>
                       <strong>Address:</strong> {value.address}
-                    </li>
+                    </span>
                     <img css={img} src={value.image} alt={value.name} />
-                    <li css={description}>{value.description}</li>
-                  </>
+                    <p css={description}>{value.description}</p>
+                  </li>
                 );
               })}
             </ul>
