@@ -8,7 +8,7 @@ import nextCookies from 'next-cookies';
 import { jsx, css } from '@emotion/core';
 import { GetServerSidePropsContext } from 'next';
 import Footer from '../components/Footer';
-import Cookie from 'js-cookie';
+
 
 //================================================================================
 // Style
@@ -166,14 +166,4 @@ export default function Login() {
   );
 }
 
-// export async function getServerSideProps(context: GetServerSidePropsContext) {
-//   if (nextCookies(context).token) {
-//     context.res.setHeader('location', '/');
-//     context.res.statusCode = 302;
-//     context.res.end();
-//   }
 
-//   return {
-//     props: {},
-//   };
-// }

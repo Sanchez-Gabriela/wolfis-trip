@@ -51,10 +51,6 @@ export default function App() {
           rel="stylesheet"
         />
       </head>
-      {/* <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
-      </style> */}
       <div css={app}>
         <Header />
         <div css={main}>
