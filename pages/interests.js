@@ -22,24 +22,6 @@ const app = css`
   position: relative;
 `;
 
-// .container {
-//   min-height: 100vh;
-//   padding: 0 0.5rem;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-// }
-// main {
-//   padding: 5rem 0;
-//   flex: 1;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   padding-top: 20px;
-// }
-
 const h2 = css`
   color: #4abdac;
   font-family: 'Karla', sans-serif;
