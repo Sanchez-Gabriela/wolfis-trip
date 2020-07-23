@@ -10,7 +10,7 @@
     "migrate": "dotenv ley"
   },
   "dependencies": {
-    "@datepicker-react/hooks": "^2.6.0",
+    "@datepicker-react/hooks": "^2.7.0",
     "@emotion/core": "^10.0.28",
     "argon2": "^0.26.2",
     "cookie": "^0.4.1",
