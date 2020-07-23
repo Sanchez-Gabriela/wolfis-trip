@@ -4,10 +4,10 @@ import { jsx } from '@emotion/core';
 export default function NavButton({ children, onClick }) {
   return (
     <>
-      <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
-      </style>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Karla&display=swap"
+        rel="stylesheet"
+      ></link>
       <button
         type="button"
         onClick={onClick}

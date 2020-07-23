@@ -4,7 +4,6 @@ import MultiSelect from 'react-multi-select-component';
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
 import Link from 'next/link';
-import Footer from '../components/Footer';
 import Datepicker from '../components/Datepicker';
 import Header from '../components/Header';
 import { START_DATE } from '@datepicker-react/hooks';
@@ -46,8 +45,6 @@ const h2 = css`
   font-family: 'Karla', sans-serif;
   letter-spacing: 0.1em;
   text-align: center;
-  border-bottom: 2px solid #f7b733;
-  border-top: 2px solid #f7b733;
   padding-top: 10px;
   padding-bottom: 10px;
 `;
@@ -78,7 +75,7 @@ const main = css`
 const divToGo = css``;
 
 const button = css`
-  width: 5%;
+  width: 70px;
   font-family: 'Karla', sans-serif;
   margin: auto;
   margin-top: 40px;
@@ -87,7 +84,7 @@ const button = css`
   border: 2px solid #4abdac;
   padding: 10px;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 `;
 
 const selectButton = css`
@@ -105,6 +102,21 @@ const selectButton = css`
 
 const tags = css`
   height: 500px;
+`;
+
+const dates = css`
+  list-style: none;
+  line-height: 2.5;
+  font-size: 16px;
+`;
+
+const section = css`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  font-size: 20px;
+  line-height: 2.5;
 `;
 
 //================================================================================
@@ -148,50 +160,25 @@ export default function Interests() {
   // alert('You have selected ' + resultDays + 'day(s)');
   console.log(resultDays);
 
-  // const datesInInterval = eachDayOfInterval({
-  //   start: state.startDate,
-  //   end: state.endDate,
-  // });
-  // console.log(datesInInterval);
+  // function array() {
+  let datesInInterval = [];
+  if (state.startDate !== null && state.endDate !== null) {
+    datesInInterval = eachDayOfInterval({
+      start: state.startDate,
+      end: state.endDate,
+    });
+  }
 
-  ///////////////////////////////////////////////////////////////////////////////////////
-  //Get days between 2 dates manually
-  ///////////////////////////////////////////////////////////////////////////////////////
-
-  // if (state.startDate !== null && state.endDate !== null) {
-  //   let userFirstDate = state.startDate;
-  //   let userSecondDate = state.endDate;
-
-  //   // adjust 0 before single digit date
-  //   let firstDay = ('0' + userFirstDate.getDate()).slice(-2);
-  //   let secondDay = ('0' + userSecondDate.getDate()).slice(-2);
-
-  //   // current month
-  //   let firstMonth = ('0' + (userFirstDate.getMonth() + 1)).slice(-2);
-  //   let secondMonth = ('0' + (userFirstDate.getMonth() + 1)).slice(-2);
-
-  //   // current year
-  //   let year = userFirstDate.getFullYear();
-
-  //   // prints date in YYYY-MM-DD format
-  //   const firstJourneyDay = firstMonth + '-' + firstDay + '-' + year;
-  //   const secondJourneyDay = secondMonth + '-' + secondDay + '-' + year;
-
-  //   const date1 = new Date(firstJourneyDay);
-  //   const date2 = new Date(secondJourneyDay);
-  //   const diffTime = Math.abs(date2 - date1);
-  //   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 18));
-  //   alert('You have selected ' + diffDays + ' day(s)');
-  // }
+  // const [select, setSelect] = useState(['']);
 
   const [journeyId, setJourneyId] = useState();
 
   return (
     <>
-      <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
-      </style>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Karla&display=swap"
+        rel="stylesheet"
+      ></link>
       <div css={app}>
         <Header />
         <div css={main}>
@@ -199,33 +186,42 @@ export default function Interests() {
           <div css={calendar}>
             <Datepicker state={state} setState={setState} />
           </div>
-          <button
-            css={button}
-            onClick={() => {
-              fetch('/api/journey', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  startDate: state.startDate.toISOString().split('T')[0],
-                  endDate: state.endDate.toISOString().split('T')[0],
-                  token: Cookie.get('token'),
-                }), // body data type must match "Content-Type" header
-              })
-                .then((response) => {
-                  console.log(response);
-                  return response.json();
+          {state.startDate !== null && state.endDate !== null && (
+            <button
+              css={button}
+              onClick={() => {
+                fetch('/api/journey', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    startDate: state.startDate.toISOString().split('T')[0],
+                    endDate: state.endDate.toISOString().split('T')[0],
+                    token: Cookie.get('token'),
+                  }), // body data type must match "Content-Type" header
                 })
-                .then((json) => {
-                  console.log(json.id);
-                  setJourneyId(json.id);
-                });
-            }}
-          >
-            submit
-          </button>
-          {/* <p>{datesInInterval}</p> */}
+                  .then((response) => {
+                    console.log(response);
+                    return response.json();
+                  })
+                  .then((json) => {
+                    console.log(json.id);
+                    setJourneyId(json.id);
+                  });
+              }}
+            >
+              submit
+            </button>
+          )}
+          <section>
+            <ul css={section}>
+              Choose for each day the places you want to visit:
+              {datesInInterval.map((date) => {
+                return <li css={dates}>{date.toDateString()}</li>;
+              })}
+            </ul>
+          </section>
           <div css={tags} hidden={!journeyId}>
             <h2 css={h2}>2. What are your interests:</h2>
             <div css={dropdown}>
@@ -274,7 +270,6 @@ export default function Interests() {
             </a>
           </Link>
         </div>
-        <Footer />
       </div>
     </>
   );

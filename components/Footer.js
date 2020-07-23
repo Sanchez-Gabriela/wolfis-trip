@@ -67,7 +67,7 @@ export default function Footer() {
     letter-spacing: 1px;
     background-color: #999;
     padding-top: 10px;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
   `;
 
   const copyright = css`
