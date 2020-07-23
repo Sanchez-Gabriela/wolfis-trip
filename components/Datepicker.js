@@ -3,7 +3,7 @@ import { useDatepicker, START_DATE } from '@datepicker-react/hooks';
 import { jsx } from '@emotion/core';
 import Month from './Month';
 import NavButton from './NavButton';
-import DatepickerContext from './datepickerContext';
+import DatepickerContext from './DatepickerContext';
 
 export default function Datepicker(props) {
   // props.state
