@@ -12,7 +12,6 @@
   "dependencies": {
     "@datepicker-react/hooks": "^2.6.0",
     "@emotion/core": "^10.0.28",
-    "@y0c/react-datepicker": "^1.0.3",
     "argon2": "^0.26.2",
     "cookie": "^0.4.1",
     "csrf": "^3.1.0",
