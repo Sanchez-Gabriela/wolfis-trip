@@ -2,7 +2,7 @@
 import { useRef, useContext } from 'react';
 import { useDay } from '@datepicker-react/hooks';
 import { jsx } from '@emotion/core';
-import DatepickerContext from './datepickerContext';
+import DatepickerContext from './Datepickercontext';
 import getColor from '../utils/getcolor';
 
 function Day({ dayLabel, date }) {
