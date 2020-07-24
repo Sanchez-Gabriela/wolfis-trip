@@ -12,7 +12,7 @@ export default function NavButton({ children, onClick }) {
         type="button"
         onClick={onClick}
         css={{
-          width: '15%',
+          width: '75px',
           fontFamily: 'Karla, sans-serif',
           margin: 'auto',
           marginTop: '10px',

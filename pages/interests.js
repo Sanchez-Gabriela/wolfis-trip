@@ -16,15 +16,16 @@ import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns';
 
 const app = css`
   min-height: 100vh;
-  font-weight: 400;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-family: 'Karla', sans-serif;
-  width: 100%;
-  position: relative;
 `;
 
 const h2 = css`
-  color: #4abdac;
-  font-family: 'Karla', sans-serif;
+  color: black;
+  font-family: 'Cabin Sketch', cursive;
   letter-spacing: 0.1em;
   text-align: center;
   padding-top: 10px;
@@ -37,11 +38,11 @@ const dropdown = css`
 `;
 
 const readyToGo = css`
-  color: #f7b733;
+  color: black;
   font-size: 40px;
   text-decoration: none;
-  font-family: 'Karla', sans-serif;
-  margin-left: 40%;
+  font-family: 'Cabin Sketch', cursive;
+  margin-left: 35%;
 `;
 
 const calendar = css`
@@ -49,41 +50,50 @@ const calendar = css`
 `;
 
 const main = css`
+  padding: 5rem 0;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  font-family: 'Karla', sans-serif;
 `;
 
-const divToGo = css``;
+const divToGo = css`
+  margin-bottom: 30px;
+`;
 
-const button = css`
+const calendarButton = css`
   width: 70px;
   font-family: 'Karla', sans-serif;
   margin: auto;
-  margin-top: 40px;
+  margin-top: 10px;
   border-radius: 4px;
   color: #4abdac;
   border: 2px solid #4abdac;
   padding: 10px;
   font-weight: bold;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
 `;
 
 const selectButton = css`
-  width: 70px;
+  width: 30px;
   font-family: 'Karla', sans-serif;
   text-align: center;
   margin-top: 40px;
   border-radius: 4px;
   color: #4abdac;
   border: 2px solid #4abdac;
-  padding: 10px;
+  padding: 5px;
   font-weight: bold;
   margin-bottom: 30px;
 `;
 
 const tags = css`
   height: 500px;
+  margin-top: 50px;
+  width: 700px;
 `;
 
 const dates = css`
@@ -95,12 +105,28 @@ const dates = css`
 const section = css`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
   margin: auto;
   font-size: 20px;
   line-height: 2.5;
+  padding: 20px;
+  margin-top: -50px;
 `;
 
+const sketchText = css`
+  font-family: 'Cabin Sketch', cursive;
+  margin-top: 50px;
+`;
+
+const dateSection = css`
+  background-color: #fff2de;
+  border-radius: 30px;
+`;
+
+const input = css`
+  background-color: #4abdac;
+  border-radius: 4px;
+`;
 //================================================================================
 // Function
 //================================================================================
@@ -161,16 +187,21 @@ export default function Interests() {
         href="https://fonts.googleapis.com/css2?family=Karla&display=swap"
         rel="stylesheet"
       ></link>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap"
+        rel="stylesheet"
+      ></link>
       <div css={app}>
         <Header />
         <div css={main}>
-          <h2 css={h2}>1. Choose your dates </h2>
+          <h2 css={h2}>1. Choose your dates &#x2935;</h2>
           <div css={calendar}>
             <Datepicker state={state} setState={setState} />
           </div>
+          <span css={sketchText}>Step 2 &#x2935;</span>
           {state.startDate !== null && state.endDate !== null && (
             <button
-              css={button}
+              css={calendarButton}
               onClick={() => {
                 fetch('/api/journey', {
                   method: 'POST',
@@ -193,19 +224,21 @@ export default function Interests() {
                   });
               }}
             >
-              submit
+              Click here
             </button>
           )}
-          <section>
+          <section css={dateSection}>
             <ul css={section}>
-              Choose for each day the places you want to visit:
+              <p css={sketchText}>
+                &#x2939; 3 Now choose for each day the places you want to visit:
+              </p>
               {datesInInterval.map((date) => {
                 return <li css={dates}>{date.toDateString()}</li>;
               })}
             </ul>
           </section>
           <div css={tags} hidden={!journeyId}>
-            <h2 css={h2}>2. What are your interests:</h2>
+            <h2 css={h2}>4 Select your interests: &#x2938;</h2>
             <div css={dropdown}>
               <pre hidden>{JSON.stringify(selected)}</pre>
               <MultiSelect
@@ -213,7 +246,9 @@ export default function Interests() {
                 value={selected}
                 onChange={setSelected}
                 labelledBy={'Select'}
+                css={input}
               />
+              <span css={sketchText}>Click here! </span>
               <button
                 onClick={() => {
                   fetch('/api/tags', {
@@ -240,7 +275,7 @@ export default function Interests() {
                 }}
                 css={selectButton}
               >
-                submit
+                ok
               </button>
             </div>
           </div>
@@ -248,7 +283,7 @@ export default function Interests() {
         <div css={divToGo}>
           <Link href={'/journey/' + journeyId}>
             <a href="#a" css={readyToGo}>
-              Get your plan! &#x0226B;
+              Check out your plan! &#x0226B;
             </a>
           </Link>
         </div>

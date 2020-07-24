@@ -17,31 +17,55 @@ export default function App() {
     padding: 0 0.5rem;
   `;
 
-  const header = css`
-    width: 100%;
-    background-color: #4abdac;
-    -webkit-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
-    -moz-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
-    box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
-    animation: slideUp 2000ms ease;
-  `;
+  // const header = css`
+  //   width: 100%;
+  //   background-color: #ffe7a3;
+  //   -webkit-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+  //   -moz-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+  //   box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+  //   animation: slideUp 2000ms ease;
+  // `;
   const img = css`
-    width: 500px;
+    width: 600px;
     margin-left: auto;
     margin-right: auto;
     display: block;
     padding-top: 50px;
     padding-bottom: 50px;
     margin-top: 30px;
+    margin-bottom: 10px;
   `;
 
   const quote = css`
     text-align: center;
-    font-size: 1.5rem;
-    font-family: 'Karla', sans-serif;
-    margin-top: 60px;
-    color: #555555;
+    font-size: 30px;
+    font-family: 'Karla', cursive;
+    margin-top: 5px;
+    color: #00a399;
   `;
+
+  // const screenshots = css`
+  //   width: 250px;
+  //   height: 200px;
+  //   border: 2px solid lightgrey;
+  //   border-radius: 15px;
+  //   padding: 10px;
+  //   margin-right: 10px;
+  // `;
+
+  // const images = css`
+  //   width: 100%;
+  //   margin-left: 10%;
+  //   margin-top: 50px;
+  // `;
+
+  // const backgroundImg = css`
+  //   background-color: lightgrey;
+  //   width: 600px;
+  //   margin-left: auto;
+  //   margin-right: auto;
+  //   display: block;
+  // `;
 
   return (
     <div>
@@ -50,18 +74,41 @@ export default function App() {
           href="https://fonts.googleapis.com/css2?family=Karla&display=swap"
           rel="stylesheet"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap"
+          rel="stylesheet"
+        ></link>
       </head>
       <div css={app}>
         <Header />
         <div css={main}>
-          <div css={header}>
+          <div>
             <img src="/wien.png" alt="vienna city" css={img} />
           </div>
           <div>
             <p css={quote}>
               Get your personalized plan based on your interests!
             </p>
+            <p css={quote}>Vienna waits for you &#x2764;</p>
           </div>
+          {/* <div css={images}>
+            <img css={screenshots} src="/dates1.png" alt="screenshot dates" />
+            <img
+              css={screenshots}
+              src="/step2and3.png"
+              alt="screenshot dates"
+            />
+            <img
+              css={screenshots}
+              src="/dropdownOpen.png"
+              alt="screenshot dates"
+            />
+            <img
+              css={screenshots}
+              src="/userPlan3.png"
+              alt="screenshot dates"
+            /> */}
+          {/* </div> */}
         </div>
         <Footer />
       </div>

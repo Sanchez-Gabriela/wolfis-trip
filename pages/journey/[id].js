@@ -15,7 +15,7 @@ export default function Userplan({ plan }) {
 
   const header = css`
     width: 100%;
-    margin-top: 20px;
+    margin-top: 16px;
     text-align: center;
   `;
 
@@ -30,13 +30,12 @@ export default function Userplan({ plan }) {
   `;
 
   const journey = css`
-    width: 100%;
     margin: auto;
   `;
 
   const text = css`
     font-family: 'Karla', cursive;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 2;
     list-style-type: none;
     padding: 10px;
@@ -45,16 +44,16 @@ export default function Userplan({ plan }) {
 
   const name = css`
     font-family: 'Karla', cursive;
-    font-size: 25px;
+    font-size: 18px;
     line-height: 1.2;
     list-style-type: none;
     padding: 10px;
     color: #555555;
-    border-bottom: 1.5px solid #4abdac;
   `;
 
   const img = css`
-    width: 70%;
+    width: 300px;
+    height: 200px;
     background-color: $coral;
     -webkit-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
     -moz-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
@@ -62,16 +61,14 @@ export default function Userplan({ plan }) {
     animation: slideUp 2000ms ease;
     margin-bottom: 20px;
     border-radius: 4px;
+    margin-top: 20px;
   `;
 
   const main = css`
     min-height: 100vh;
     padding: 0 0.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin-top: 5%;
-    width: 50%;
+    width: 95%;
     display: flex;
     justify-content: center;
     background-color: #ffff;
@@ -81,7 +78,7 @@ export default function Userplan({ plan }) {
     animation: slideUp 2000ms ease;
     margin-bottom: 20px;
     border-radius: 4px;
-    margin-left: 25%;
+    margin-left: 2%;
   `;
 
   const description = css`
@@ -93,7 +90,8 @@ export default function Userplan({ plan }) {
     color: #555555;
     line-height: 2;
     text-align: left;
-    font-size: 20px;
+    font-size: 16px;
+    width: 300px;
   `;
 
   const icon = css`
@@ -102,9 +100,32 @@ export default function Userplan({ plan }) {
   `;
 
   const li = css`
+    ${'' /* display: flex;
+    flex-direction: column;
+    justify-content: center; */}
+    list-style-type: none;
+  `;
+
+  const wolfi = css`
+    width: 100px;
+    text-align: center;
+    margin-left: 45%;
+  `;
+
+  const place = css`
+    display: flex;
+    flex-direction: row;
+  `;
+
+  const danke = css`
+    font-family: 'Cabin Sketch', cursive;
+    line-height: 3;
+    text-align: center;
+  `;
+
+  const bottomDiv = css`
     display: flex;
     flex-direction: column;
-    justify-content: center;
   `;
   return (
     <div>
@@ -117,29 +138,40 @@ export default function Userplan({ plan }) {
       <div css={app}>
         <Header />
         <div css={main}>
-          <div css={header}>
-            <span css={quote}>Your plan </span>
-            <img css={icon} src="/yellowMap.png" alt="goal-flag" />
+          <div>
+            <div css={header}>
+              <span css={quote}>Your plan </span>
+              <img css={icon} src="/yellowMap.png" alt="goal-flag" />
+            </div>
+            <div css={journey}>
+              <ul css={place}>
+                {plan.map((value) => {
+                  return (
+                    <li key={value.name} css={li}>
+                      <span css={name} role="img" aria-label="flag">
+                        {' '}
+                        🚩 {value.name}
+                      </span>
+                      <br />
+                      <br />
+                      <span css={text}>
+                        <strong>Address:</strong> {value.address}
+                      </span>
+                      <br />
+                      <img css={img} src={value.image} alt={value.name} />
+                      <p css={description}>{value.description}</p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
-          <div css={journey}>
-            <ul>
-              {plan.map((value) => {
-                return (
-                  <li key={value.name} css={li}>
-                    <span css={name} role="img" aria-label="flag">
-                      {' '}
-                      🚩 {value.name}
-                    </span>
-                    <span css={text}>
-                      <strong>Address:</strong> {value.address}
-                    </span>
-                    <img css={img} src={value.image} alt={value.name} />
-                    <p css={description}>{value.description}</p>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+        </div>
+        <div css={bottomDiv}>
+          <span css={danke} role="img" aria-label="ballon">
+            Don't forget to say Danke 🎈
+          </span>
+          <img css={wolfi} src="/logo.png" alt="wolfi" />
         </div>
         <Footer />
       </div>

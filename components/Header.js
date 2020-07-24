@@ -31,12 +31,15 @@ export default function Header() {
 
   const links = css`
     padding-right: 30px;
-    padding-left: 20px;
+    background: #4abdac;
+    border-radius: 1px;
+    padding-left: 30px;
+    margin-right: 10px;
     font-size: 1.5rem;
     text-decoration: none;
-    color: #555555;
+    color: #ffff;
     &:hover {
-      color: #ff847c;
+      color: #eb5e5f;
     }
   `;
 
@@ -82,10 +85,10 @@ export default function Header() {
 
   return (
     <div>
-      {/* <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
-      </style> */}
+      <link
+        href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap"
+        rel="stylesheet"
+      ></link>
       <div css={navbar}>
         <div className="logo-header">
           <Link href={'/index'}>
