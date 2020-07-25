@@ -898,7 +898,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
 
 /***/ }),
 
-/***/ 6:
+/***/ 1:
 /*!**********************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fjourney%2F%5Bid%5D&absolutePagePath=%2FUsers%2Fgabrielasanchez%2Fprojects%2Fwolfis-trip%2Fpages%2Fjourney%2F%5Bid%5D.js ***!
   \**********************************************************************************************************************************************************************/
@@ -921,4 +921,4 @@ eval("module.exports = dll_5030f387d328e4415785;//# sourceURL=[module]\n//# sour
 
 /***/ })
 
-},[[6,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
