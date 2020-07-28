@@ -8,8 +8,7 @@ import { jsx, css } from '@emotion/core';
 export default function Header() {
   const logo = css`
     font-size: 40px;
-    color: #555555;
-    border: 2px solid #555555;
+    color: #4abdac;
     font-family: 'Karla', sans-serif;
     margin-top: 20px;
     text-decoration: none;
@@ -19,7 +18,7 @@ export default function Header() {
   const navbar = css`
     width: 100%;
     display: flex;
-    color: #555555;
+    color: #4abdac;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -31,15 +30,15 @@ export default function Header() {
 
   const links = css`
     padding-right: 30px;
-    background: #4abdac;
+
     border-radius: 1px;
     padding-left: 30px;
-    margin-right: 10px;
+    margin-right: -10px;
     font-size: 1.5rem;
     text-decoration: none;
-    color: #ffff;
+    color: #4abdac;
     &:hover {
-      color: #eb5e5f;
+      color: #4abdac;
     }
   `;
 

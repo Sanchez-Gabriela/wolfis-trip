@@ -70,11 +70,12 @@ const calendarButton = css`
   margin: auto;
   margin-top: 10px;
   border-radius: 4px;
-  color: #4abdac;
+  background-color: #4abdac;
   border: 2px solid #4abdac;
   padding: 10px;
   font-weight: bold;
   margin-bottom: 70px;
+  color: #ffff;
 `;
 
 const selectButton = css`
@@ -83,11 +84,12 @@ const selectButton = css`
   text-align: center;
   margin-top: 40px;
   border-radius: 4px;
-  color: #4abdac;
+  background-color: #4abdac;
   border: 2px solid #4abdac;
   padding: 5px;
   font-weight: bold;
   margin-bottom: 30px;
+  color: #ffff;
 `;
 
 const tags = css`
@@ -143,7 +145,7 @@ export default function Interests() {
     { value: '2', label: 'classical music' },
     { value: '3', label: 'palaces' },
     { value: '4', label: 'parks' },
-    { value: '5', label: 'churchs' },
+    { value: '5', label: 'churches' },
     { value: '6', label: 'markets' },
     { value: '7', label: 'coffee houses' },
     { value: '8', label: 'typical food' },

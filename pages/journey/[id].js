@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
 import Footer from '../../components/Footer';
+import Weather from '../../components/Weather';
 
 export default function Userplan({ plan }) {
   const app = css`
@@ -140,6 +141,7 @@ export default function Userplan({ plan }) {
         <div css={main}>
           <div>
             <div css={header}>
+              <Weather />
               <span css={quote}>Your plan </span>
               <img css={icon} src="/yellowMap.png" alt="goal-flag" />
             </div>

@@ -53,10 +53,11 @@ export default function Register(props: Props) {
     font-family: 'Karla', sans-serif;
     margin: auto;
     border-radius: 4px;
-    color: #4abdac;
+    color: #ffff;
     border: 2px solid #4abdac;
     padding: 10px;
     font-weight: bold;
+    background-color: #4abdac;
   `;
 
   const forgottenPass = css`
@@ -90,9 +91,6 @@ export default function Register(props: Props) {
 
             <button css={button}>REGISTER</button>
           </form>
-          <a href="#a" css={forgottenPass}>
-            I forgot my password, send me an email &#x0226B;
-          </a>
           <Link href={'/login'}>
             <a href="#a" css={forgottenPass}>
               I already have an Account &#x0226B;

@@ -9,11 +9,14 @@ import Footer from '../components/Footer';
 //================================================================================
 // Style
 //================================================================================
+const main = css`
+  min-height: 74vh;
+  padding: 0 0.5rem;
+`;
 
 const form = css`
   background: #f7b733;
   width: 350px;
-  position: relative;
   margin: auto;
   margin-top: 5%;
   display: flex;
@@ -22,6 +25,7 @@ const form = css`
   justify-content: center;
   padding: 20px;
   border-radius: 6px;
+  margin-bottom: 50px;
 `;
 
 const input = css`
@@ -39,11 +43,13 @@ const button = css`
   margin: auto;
   margin-top: 40px;
   border-radius: 4px;
-  color: #4abdac;
+  color: #ffff;
   border: 2px solid #4abdac;
   padding: 10px;
   font-weight: bold;
   margin-bottom: 30px;
+  background-color: #4abdac;
+  margin-right: 10px;
 `;
 
 const name = css`
@@ -58,7 +64,7 @@ export default function contact() {
   return (
     <>
       <Header />
-      <div>
+      <div css={main}>
         <form
           css={form}
           action="mailto:gaby.peta@gmail.com?subject=Wolfi%20Desktop%20Application."
