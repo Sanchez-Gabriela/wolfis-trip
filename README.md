@@ -1,30 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
+# Wolfis-trip
 
-## Getting Started
+It is an alternative for those who prefer to follow a plan rather than browsing and deciding for the places to visit.
 
-First, run the development server:
+Functionality:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- Registration
+- Calendar to pick the dates to be planned.
+- Dropdown selector with 12 catogories, where each selected tag will randomly generate a place. 
+- The result is a list of places where each place shows name, picture, address and a short description.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Landing Page
 
-## Learn More
+<img src="/sreeenshots/landingPage.png" width="400"/>
 
-To learn more about Next.js, take a look at the following resources:
+### Registration 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<img src="/sreeenshots/register.png" width="400"/>
 
-You can check out [the Next.js GitHub repository](https://github.com/zeit/next.js/) - your feedback and contributions are welcome!
+### Calendar and Categories
 
-## Deploy on Vercel
+<img src="/sreeenshots/calendar.png" width="400"/>
+<img src="/sreeenshots/selector.png" width="400"/>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Plan
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<img src="/sreeenshots/plan.png" width="400"/>
+
+
+## All technologies used
+- Next.js
+- Database with PostgresSQL and migrations (Ley).Applying 3 join tables.
+- ESLint which is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs.
+- Cookies to store tokens.
+- API to get data from Stadt Wien - ...www.wien.gv.at
+- API Routes
+
+## Setup instructions
+
+- Install create-next-app
+- Run the development server: yarn dev, Open http://localhost:3000 with your browser to see the result.
+- You can start editing the page by modifying pages/index.js. The page auto-updates as you edit the file.
+- The data used in the project can be downloaded thanks migrations.
+
+
+## Deploy
+
+The Next.js app was deployed on Heroku (https://www.heroku.com/#) through GitHub repo.
