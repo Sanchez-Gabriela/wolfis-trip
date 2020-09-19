@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Head from 'next/head';
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';

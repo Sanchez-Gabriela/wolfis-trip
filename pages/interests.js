@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import MultiSelect from 'react-multi-select-component';
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */

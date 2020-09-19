@@ -57,12 +57,20 @@ export default function Datepicker(props) {
       <br />
       <div>
         <strong>Start date: </strong>
-        {props.state.startDate && props.state.startDate.toLocaleString()}
+        {props.state.startDate &&
+          props.state.startDate
+            .toLocaleString()
+            .split(' ')[0]
+            .replace(/,\s*$/, '')}
       </div>
       <br />
       <div>
         <strong>End date: </strong>
-        {props.state.endDate && props.state.endDate.toLocaleString()}
+        {props.state.endDate &&
+          props.state.endDate
+            .toLocaleString()
+            .split(' ')[0]
+            .replace(/,\s*$/, '')}
       </div>
       <br />
       <strong></strong>
